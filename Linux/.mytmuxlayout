@@ -1,0 +1,6 @@
+selectp -t 0            #select the 0th pane
+splitw -h -p 50         #split it into two equal parts horizontally
+selectp -t 0            #select the 0th pane, that's the left one
+resizep -L 10           #zoom out it
+splitw -v -p 50         #split in into two equal parts vertically
+selectp -t 0
