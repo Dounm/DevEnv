@@ -41,6 +41,3 @@ set fileencodings=utf-8
 
 map <F7> :!g++ %:t -o %:r<Enter>
 map <F8> :!./%:r<enter>
-"map <F1> :!mpicxx %:t -o %:r<Enter>
-map <F1> :!mpicxx pc.cpp RankNode.cpp Communication.cpp -o pc<Enter>
-map <F2> :!mpirun -np 2 ./pc<Enter>

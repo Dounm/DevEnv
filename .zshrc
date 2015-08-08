@@ -111,3 +111,7 @@ alias tmuxa='tmux attach'
 #bind Space:magic-space 
 #used in zsh 
 bindkey " " magic-space 
+
+#lauch autojump
+. /usr/share/autojump/autojump.sh
+
