@@ -49,7 +49,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git autojump)
 
 # User configuration
 
@@ -101,10 +101,13 @@ alias -s zip='unzip'
 alias -s bz2='tar -xjvf' 
  
 alias sbash='source ~/.bashrc' 
+alias szsh='source ~/.zshrc'
 alias vbash='vim ~/.bashrc' 
 alias vzsh='vim ~/.zshrc' 
 alias vvim='vim ~/.vimrc' 
 alias tmuxa='tmux attach' 
+
+export EDITOR=/usr/bin/vim
  
 #press space, let the history expression and symbol become what them should be 
 #used in bash 
@@ -113,5 +116,7 @@ alias tmuxa='tmux attach'
 bindkey " " magic-space 
 
 #lauch autojump
-. /usr/share/autojump/autojump.sh
+#. /usr/share/autojump/autojump.sh
 
+ [[ -s /home/dounm/.autojump/etc/profile.d/autojump.sh ]] && source /home/dounm/.autojump/etc/profile.d/autojump.sh
+ autoload -U compinit && compinit -u
