@@ -1,6 +1,9 @@
 # DevEnv
-How to set development environment for Dounm
-Store all my dot files in it!
+Set development environment on a new device quickly for Dounm
+just run 'sh setdev.sh' and then all are done!
+
+## Dotfiles
+All my dot files I used!
 
 Include these file:
 - .vimrc
@@ -9,4 +12,3 @@ Include these file:
   - .tmux.conf
   - .mytmuxlayout
 - .xmodmaprc
-- *config.sh*: create softlinks to these dotfiles in ~ directory 
