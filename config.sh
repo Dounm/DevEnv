@@ -1,8 +1,14 @@
 #!/bin/bash
 
-absolute_path=$(pwd)
+#set the dofiles
+absolute_path=`pwd`/dotfiles
+backup_date=`date +%F`
 
-rm -rf ~/.vimrc ~/.zshrc ~/.xmodmaprc ~/.tmux.conf ~/.mytmuxlayout
+mv ~/.vimrc ~/.vimrc-${backup_date}
+mv ~/.zshrc ~/.zshrc-${backup_date}
+mv ~/.xmodmaprc ~/.xmodmaprc-${backup_date}
+mv ~/.tmux.conf ~/.tmux.conf-${backup_date}
+mv ~/.mytmuxlayout ~/.mytmuxlayout-${backup_date}
 
 #create soft link
 ln -s ${absolute_path}/.vimrc ~/.vimrc

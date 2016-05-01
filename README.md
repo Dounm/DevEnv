@@ -1,4 +1,5 @@
-# DotFiles
+# DevEnv
+How to set development environment for Dounm
 Store all my dot files in it!
 
 Include these file:
