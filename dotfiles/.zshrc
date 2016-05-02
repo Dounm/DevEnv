@@ -88,7 +88,7 @@ alias ll='ls -l'
 alias la='ls -a' 
 alias vi='vim' 
 alias grep="grep --color=auto" 
-alias mv = 'mv -i'
+alias mv='mv -i'
  
 #used in zsh only, not bash 
 alias -s html=vim #input the *.html in the shell and it will open in vim 
