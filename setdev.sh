@@ -68,6 +68,11 @@ tmp="alias rm='python ${CURRENT_PATH}/recycle.py ~/recycle_bin '~ ~/install ~/gi
 echo tmp >> ~/.zshrc
 source ~/.zshrc
 
+
 #Delete the install files and folders
 rm ctags-5.8.tar.gz
 rm taglist.zip
+
+
+#Generate SSH key
+ssh-keygen
