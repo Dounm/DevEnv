@@ -26,12 +26,12 @@ then
     mkdir -p ~/.vim/doc
 fi
 
-wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz 
+wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz -O
 tar -xzvf ctags-5.8.tar.gz -C ~/install
 cd ${INSTALL_PATH}/ctags-5.8
 ./configure && make && make install
 
-wget http://www.vim.org/scripts/download_script.php?src_id=19574 taglist.zip
+wget http://www.vim.org/scripts/download_script.php?src_id=19574 -O taglist.zip
 unzip taglist.zip -d ${INSTALL_PATH}/taglist
 cp ${INSTALL_PATH}/taglist/taglist.txt ~/.vim/doc
 cp ${INSTALL_PATH}/taglist/taglist.vim ~/.vim/plugin
