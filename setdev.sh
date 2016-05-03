@@ -2,9 +2,9 @@
 
 INSTALL_PATH='~/install'
 CURRENT_PATH=`pwd`
-if [-d $INSTALL_PATH]
+if ! [ -d $INSTALL_PATH ]
 then
-    mkdir -p ${INSTALL_PATH}
+    mkdir ${INSTALL_PATH}
 fi
 
 #Install some softwares
@@ -13,15 +13,16 @@ cat ~/.passwd | sudo -S apt-get install tmux
 
 ##Install zsh and oh-my-zsh and zsh-plugins
 cat ~/.passwd | sudo -S apt-get install zsh
+cat ~/.passwd | sudo -S chsh -s /bin/zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 cat ~/.passwd | sudo -S apt-get install autojump
 
 ##Install vim plugins
-if [-d ~/.vim/plugin]
+if ! [ -d ~/.vim/plugin ]
 then
     mkdir -p ~/.vim/plugin
 fi
-if [-d ~/.vim/doc]
+if ! [ -d ~/.vim/doc ]
 then
     mkdir -p ~/.vim/doc
 fi
@@ -33,8 +34,8 @@ cd ${INSTALL_PATH}/ctags-5.8
 
 wget http://www.vim.org/scripts/download_script.php?src_id=19574 -O taglist.zip
 unzip taglist.zip -d ${INSTALL_PATH}/taglist
-cp ${INSTALL_PATH}/taglist/taglist.txt ~/.vim/doc
-cp ${INSTALL_PATH}/taglist/taglist.vim ~/.vim/plugin
+cp ${INSTALL_PATH}/taglist/doc/taglist.txt ~/.vim/doc
+cp ${INSTALL_PATH}/taglist/plugin/taglist.vim ~/.vim/plugin
 
 #TODO complete the code to handle the shell arguments 
 if [ $0 == '--ssserver']
@@ -60,12 +61,12 @@ ln -s ${absolute_path}/.mytmuxlayout ~/.mytmuxlayout
 
 
 #Set the recycle bin
-if [-d ~/recycle_bin]
+if ! [ -d ~/recycle_bin ]
 then
     mkdir ~/recycle_bin
 fi
 tmp="alias rm='python ${CURRENT_PATH}/recycle.py ~/recycle_bin '~ ~/install ~/git' '"
-echo tmp >> ~/.zshrc
+echo $tmp >> ~/.zshrc
 source ~/.zshrc
 
 
