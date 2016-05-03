@@ -115,3 +115,4 @@ export EDITOR=/usr/bin/vim
 #bind Space:magic-space 
 #used in zsh 
 bindkey " " magic-space 
+alias rm='python /home/dounm/git/DevEnv/recycle.py ~/recycle_bin '~ ~/install ~/git' '

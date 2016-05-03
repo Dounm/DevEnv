@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_PATH='~/install'
+INSTALL_PATH="${HOME}/install"
 CURRENT_PATH=`pwd`
 if ! [ -d $INSTALL_PATH ]
 then
@@ -8,14 +8,15 @@ then
 fi
 
 #Install some softwares
-cat ~/.passwd | sudo -S apt-get install vim
-cat ~/.passwd | sudo -S apt-get install tmux
+echo Y > tmp.file
+cat ~/.passwd | sudo -S apt-get install vim < tmp.file
+cat ~/.passwd | sudo -S apt-get install tmux < tmp.file
 
 ##Install zsh and oh-my-zsh and zsh-plugins
-cat ~/.passwd | sudo -S apt-get install zsh
+cat ~/.passwd | sudo -S apt-get install zsh < tmp.file
 cat ~/.passwd | sudo -S chsh -s /bin/zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-cat ~/.passwd | sudo -S apt-get install autojump
+cat ~/.passwd | sudo -S apt-get install autojump < tmp.file
 
 ##Install vim plugins
 if ! [ -d ~/.vim/plugin ]
@@ -27,25 +28,28 @@ then
     mkdir -p ~/.vim/doc
 fi
 
-wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz -O
-tar -xzvf ctags-5.8.tar.gz -C ~/install
+wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz -O ctags-5.8.tar.gz
+tar -xzvf ctags-5.8.tar.gz -C $INSTALL_PATH
 cd ${INSTALL_PATH}/ctags-5.8
-./configure && make && make install
+cat ~/.passwd | sudo -S ./configure 
+cat ~/.passwd | sudo -S make 
+cat ~/.passwd | sudo -S make install
 
+cd $CURRENT_PATH
 wget http://www.vim.org/scripts/download_script.php?src_id=19574 -O taglist.zip
 unzip taglist.zip -d ${INSTALL_PATH}/taglist
 cp ${INSTALL_PATH}/taglist/doc/taglist.txt ~/.vim/doc
 cp ${INSTALL_PATH}/taglist/plugin/taglist.vim ~/.vim/plugin
 
 #TODO complete the code to handle the shell arguments 
-if [ $0 == '--ssserver']
+if [ $0 == '--ssserver' ]
 then
     cat ~/.passwd | sudo -S install python-pip
     cat ~/.passwd | sudo -S pip install shadowsocks
 fi
 
 
-#Set the dofiles
+#Set the dotfiles
 absolute_path=`pwd`/dotfiles
 backup_date=`date +%F`
 
@@ -73,6 +77,7 @@ source ~/.zshrc
 #Delete the install files and folders
 rm ctags-5.8.tar.gz
 rm taglist.zip
+rm tmp.file
 
 
 #Generate SSH key
