@@ -49,7 +49,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump)
+plugins=(git autojump tmux)
 
 # User configuration
 
@@ -115,4 +115,5 @@ export EDITOR=/usr/bin/vim
 #bind Space:magic-space 
 #used in zsh 
 bindkey " " magic-space 
+alias rm='python /home/dounm/git/DevEnv/recycle.py ~/recycle_bin '~ ~/install ~/git' '
 alias rm='python /home/dounm/git/DevEnv/recycle.py ~/recycle_bin '~ ~/install ~/git' '
