@@ -115,9 +115,3 @@ export EDITOR=/usr/bin/vim
 #bind Space:magic-space 
 #used in zsh 
 bindkey " " magic-space 
-
-#lauch autojump
-#. /usr/share/autojump/autojump.sh
-
- [[ -s /home/dounm/.autojump/etc/profile.d/autojump.sh ]] && source /home/dounm/.autojump/etc/profile.d/autojump.sh
- autoload -U compinit && compinit -u

@@ -20,6 +20,7 @@ set showmatch
 set ruler
 set incsearch
 set nocompatible
+set hls
 set backspace=indent,eol,start
 
 imap <C-L> <right>
