@@ -106,9 +106,12 @@ alias szsh='source ~/.zshrc'
 alias vbash='vim ~/.bashrc' 
 alias vzsh='vim ~/.zshrc' 
 alias vvim='vim ~/.vimrc' 
+alias vtmux='vim ~/.tmux.conf'
 alias tmuxa='tmux attach' 
 
-export EDITOR=/usr/bin/vim
+export EDITOR="vim"  #use vim to edit command in zsh
+bindkey -v
+bindkey '^R' history-incremental-search-backward
  
 #press space, let the history expression and symbol become what them should be 
 #used in bash 
@@ -116,3 +119,4 @@ export EDITOR=/usr/bin/vim
 #used in zsh 
 bindkey " " magic-space 
 alias rm='python /home/dounm/git/DevEnv/recycle.py ~/recycle_bin '~ ~/install ~/git' '
+alias dir="find . | grep -v -E '(.git)'"

@@ -35,13 +35,17 @@ cat ~/.passwd | sudo -S ./configure
 cat ~/.passwd | sudo -S make 
 cat ~/.passwd | sudo -S make install
 
+#TODO: control ~/.vim/ directory through git
+
 cd $CURRENT_PATH
 wget http://www.vim.org/scripts/download_script.php?src_id=19574 -O taglist.zip
 unzip taglist.zip -d ${INSTALL_PATH}/taglist
 cp ${INSTALL_PATH}/taglist/doc/taglist.txt ~/.vim/doc
 cp ${INSTALL_PATH}/taglist/plugin/taglist.vim ~/.vim/plugin
 
-#TODO complete the code to handle the shell arguments 
+wget http://www.vim.org/scripts/download_script.php\?src_id\=14064 -O ~/.vim/plugin/DoxygenToolkit.vim
+
+#TODO: complete the code to handle the shell arguments 
 if [ $0 == '--ssserver' ]
 then
     cat ~/.passwd | sudo -S install python-pip
