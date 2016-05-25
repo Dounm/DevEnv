@@ -38,7 +38,8 @@ inoremap { {<enter>}<ESC>O
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
 
-set fileencodings=utf-8
+"set fileencodings=utf-8
+set fileencodings=utf-8,gbk
 
 map <F7> :!g++ %:t -o %:r<Enter>
 map <F8> :!./%:r<enter>
