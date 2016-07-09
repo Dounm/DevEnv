@@ -118,5 +118,7 @@ bindkey '^R' history-incremental-search-backward
 #bind Space:magic-space 
 #used in zsh 
 bindkey " " magic-space 
+
 alias rm='python /home/dounm/git/DevEnv/recycle.py ~/recycle_bin '~ ~/install ~/git' '
 alias dir="find . | grep -v -E '(.git)'"
+alias ag='alias | grep '
