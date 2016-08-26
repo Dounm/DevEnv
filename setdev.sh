@@ -61,11 +61,13 @@ mv ~/.vimrc ~/.vimrc-${backup_date}
 mv ~/.zshrc ~/.zshrc-${backup_date}
 mv ~/.tmux.conf ~/.tmux.conf-${backup_date}
 mv ~/.mytmuxlayout ~/.mytmuxlayout-${backup_date}
+mv ~/.octaverc ~/.octaverc-${backup_date}
 
 ln -s ${absolute_path}/.vimrc ~/.vimrc
 ln -s ${absolute_path}/.zshrc ~/.zshrc
 ln -s ${absolute_path}/.tmux.conf ~/.tmux.conf
 ln -s ${absolute_path}/.mytmuxlayout ~/.mytmuxlayout
+ln -s ${absolute_path}/.octaverc ~/.octaverc
 
 
 #Set the recycle bin
