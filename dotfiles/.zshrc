@@ -1,5 +1,7 @@
+HOME_PATH=/home/niuchong
+#
 # Path to your oh-my-zsh installation.
-export ZSH=/home/dounm/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,7 +51,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump tmux)
+plugins=(git tmux zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
@@ -85,9 +87,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias cls='clear' 
 alias ll='ls -l' 
-alias la='ls -a' 
+alias la='ls -la' 
 alias vi='vim' 
-alias grep="grep --color=auto" 
+alias grep="grep --color=auto -n" 
 alias mv='mv -i'
  
 #used in zsh only, not bash 
@@ -107,7 +109,6 @@ alias vbash='vim ~/.bashrc'
 alias vzsh='vim ~/.zshrc' 
 alias vvim='vim ~/.vimrc' 
 alias vtmux='vim ~/.tmux.conf'
-alias tmuxa='tmux attach' 
 
 export EDITOR="vim"  #use vim to edit command in zsh
 bindkey -v
@@ -119,6 +120,24 @@ bindkey '^R' history-incremental-search-backward
 #used in zsh 
 bindkey " " magic-space 
 
-alias rm='python /home/dounm/git/DevEnv/recycle.py ~/recycle_bin '~ ~/install ~/git' '
+alias rm='python ${HOME}/workspace/git/DevEnv/recycle.py ~/recycle_bin '~ ~/install ~/git' '
 alias dir="find . | grep -v -E '(.git)'"
 alias ag='alias | grep '
+
+#256color
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
+
+#autojump
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+
+#forbit zsh to expand regex *
+setopt no_nomatch
+
+bindkey '^p' autosuggest-accept
+
+source ~/.specific_zshrc

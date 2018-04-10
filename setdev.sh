@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -x
+set -e
+
 INSTALL_PATH="${HOME}/install"
 CURRENT_PATH=`pwd`
 if ! [ -d $INSTALL_PATH ]
