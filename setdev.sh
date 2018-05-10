@@ -13,27 +13,27 @@ fi
 PACKAGE_CMD=$0
 
 #Install some softwares
-echo Y > tmp.file
+echo Y > tmp.file > /dev/null
 if ! type 'tmux'
 then
   cat ~/.passwd | sudo -S ${PACKAGE_CMD} install tmux < tmp.file
 fi
 
 ##Install zsh and oh-my-zsh and zsh-plugins
-if ! type 'tmux'
+if ! type 'tmux' > /dev/null
 then
   cat ~/.passwd | sudo -S ${PACKAGE_CMD} install zsh < tmp.file
   cat ~/.passwd | sudo -S chsh -s /bin/zsh
   sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
 
-if ! type 'autojump'
+if ! type 'autojump' > /dev/null
 then
-cat ~/.passwd | sudo -S ${PACKAGE_CMD} install autojump < tmp.file
+  cat ~/.passwd | sudo -S ${PACKAGE_CMD} install autojump < tmp.file
 fi
 
 #Install ctags
-if ! type 'ctags'
+if ! type 'ctags' > /dev/null
 then
   wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz -O ctags-5.8.tar.gz
   tar -xzvf ctags-5.8.tar.gz -C $INSTALL_PATH
