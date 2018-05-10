@@ -89,7 +89,7 @@ alias cls='clear'
 alias ll='ls -l' 
 alias la='ls -la' 
 alias vi='vim' 
-alias grep="grep --color=auto -n" 
+alias grep='/usr/bin/grep --color=auto -n' 
 alias mv='mv -i'
  
 #used in zsh only, not bash 
@@ -107,6 +107,7 @@ alias sbash='source ~/.bashrc'
 alias szsh='source ~/.zshrc'
 alias vbash='vim ~/.bashrc' 
 alias vzsh='vim ~/.zshrc' 
+alias vszsh='vim ~/.specific_zshrc' 
 alias vvim='vim ~/.vimrc' 
 alias vtmux='vim ~/.tmux.conf'
 

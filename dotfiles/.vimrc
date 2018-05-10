@@ -6,8 +6,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'octol/vim-cpp-enhanced-highlight'
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'molokai'
+Plugin 'DoxygenToolkit.vim'
+Plugin 'taglist.vim'
+Plugin 'tcomment'
 Plugin 'The-NERD-tree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
@@ -64,7 +66,7 @@ inoremap <C-e> <C-o>$
 "set fileencodings=utf-8
 set fileencodings=utf-8,gbk
 
-map <F7> :!g++ %:t -o %:r<Enter>
+map <F7> :!g++ %:t -o -std=c++11 -Wall %:r<Enter>
 map <F8> :!./%:r<enter>
 
 " Taglist

@@ -10,67 +10,65 @@ then
     mkdir ${INSTALL_PATH}
 fi
 
+PACKAGE_CMD=$0
+
 #Install some softwares
 echo Y > tmp.file
-cat ~/.passwd | sudo -S apt-get install vim < tmp.file
-cat ~/.passwd | sudo -S apt-get install tmux < tmp.file
+if ! type 'tmux'
+then
+  cat ~/.passwd | sudo -S ${PACKAGE_CMD} install tmux < tmp.file
+fi
 
 ##Install zsh and oh-my-zsh and zsh-plugins
-cat ~/.passwd | sudo -S apt-get install zsh < tmp.file
-cat ~/.passwd | sudo -S chsh -s /bin/zsh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-cat ~/.passwd | sudo -S apt-get install autojump < tmp.file
-
-##Install vim plugins
-if ! [ -d ~/.vim/plugin ]
+if ! type 'tmux'
 then
-    mkdir -p ~/.vim/plugin
-fi
-if ! [ -d ~/.vim/doc ]
-then
-    mkdir -p ~/.vim/doc
+  cat ~/.passwd | sudo -S ${PACKAGE_CMD} install zsh < tmp.file
+  cat ~/.passwd | sudo -S chsh -s /bin/zsh
+  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
 
-wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz -O ctags-5.8.tar.gz
-tar -xzvf ctags-5.8.tar.gz -C $INSTALL_PATH
-cd ${INSTALL_PATH}/ctags-5.8
-cat ~/.passwd | sudo -S ./configure 
-cat ~/.passwd | sudo -S make 
-cat ~/.passwd | sudo -S make install
-
-#TODO: control ~/.vim/ directory through git
-
-cd $CURRENT_PATH
-wget http://www.vim.org/scripts/download_script.php?src_id=19574 -O taglist.zip
-unzip taglist.zip -d ${INSTALL_PATH}/taglist
-cp ${INSTALL_PATH}/taglist/doc/taglist.txt ~/.vim/doc
-cp ${INSTALL_PATH}/taglist/plugin/taglist.vim ~/.vim/plugin
-
-wget http://www.vim.org/scripts/download_script.php\?src_id\=14064 -O ~/.vim/plugin/DoxygenToolkit.vim
-
-#TODO: complete the code to handle the shell arguments 
-if [ $0 == '--ssserver' ]
+if ! type 'autojump'
 then
-    cat ~/.passwd | sudo -S install python-pip
-    cat ~/.passwd | sudo -S pip install shadowsocks
+cat ~/.passwd | sudo -S ${PACKAGE_CMD} install autojump < tmp.file
 fi
 
+#Install ctags
+if ! type 'ctags'
+then
+  wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz -O ctags-5.8.tar.gz
+  tar -xzvf ctags-5.8.tar.gz -C $INSTALL_PATH
+  cd ${INSTALL_PATH}/ctags-5.8
+  cat ~/.passwd | sudo -S ./configure 
+  cat ~/.passwd | sudo -S make 
+  cat ~/.passwd | sudo -S make install
+  rm ctags-5.8.tar.gz
+fi
 
 #Set the dotfiles
-absolute_path=`pwd`/dotfiles
-backup_date=`date +%F`
 
-mv ~/.vimrc ~/.vimrc-${backup_date}
-mv ~/.zshrc ~/.zshrc-${backup_date}
-mv ~/.tmux.conf ~/.tmux.conf-${backup_date}
-mv ~/.mytmuxlayout ~/.mytmuxlayout-${backup_date}
-mv ~/.octaverc ~/.octaverc-${backup_date}
+backup_date=`date +%F`
+function TryBackupExistedDotFiles() {
+  if ! [ -f $0 ]
+  then
+    mv $0 $0-${backup_date}
+  fi
+}
+
+
+absolute_path=`pwd`/dotfiles
+
+TryBackupExistedDotFiles ~/.vimrc
+TryBackupExistedDotFiles ~/.zshrc
+TryBackupExistedDotFiles ~/.tmux.conf
+TryBackupExistedDotFiles ~/.octaverc.conf
+
 
 ln -s ${absolute_path}/.vimrc ~/.vimrc
 ln -s ${absolute_path}/.zshrc ~/.zshrc
 ln -s ${absolute_path}/.tmux.conf ~/.tmux.conf
 ln -s ${absolute_path}/.mytmuxlayout ~/.mytmuxlayout
 ln -s ${absolute_path}/.octaverc ~/.octaverc
+echo > ~/.specific_zshrc
 
 
 #Set the recycle bin
@@ -82,12 +80,10 @@ tmp="alias rm='python ${CURRENT_PATH}/recycle.py ~/recycle_bin '~ ~/install ~/gi
 echo $tmp >> ~/.zshrc
 source ~/.zshrc
 
-
-#Delete the install files and folders
-rm ctags-5.8.tar.gz
-rm taglist.zip
 rm tmp.file
 
-
 #Generate SSH key
-ssh-keygen
+if ! [ -d ~/.ssh ]
+then
+  ssh-keygen
+fi
