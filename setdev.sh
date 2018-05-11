@@ -108,7 +108,7 @@ set +e
 grep '\[color\]' $HOME/.gitconfig
 grep_res=$?
 set -e
-if [ $grep_res == 1 ]
+if [ $grep_res != 0 ]
 then
   echo -e "[color]\n  diff = auto\n  status = auto\n  branch = auto\n  interactive = auto\n  ui = true\n  pager = true" >> ~/.gitconfig
 fi
