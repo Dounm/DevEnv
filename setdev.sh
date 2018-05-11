@@ -30,6 +30,7 @@ if ! type 'autojump' > /dev/null
 then
   git clone git://github.com/joelthelion/autojump.git ${INSTALL_PATH}/autojump
   cd ${INSTALL_PATH}/autojump && ./install.py
+  cd ${CURRENT_PATH}
 fi
 
 rm tmp.file
@@ -43,6 +44,7 @@ then
   cat ~/.passwd | sudo -S ./configure 
   cat ~/.passwd | sudo -S make 
   cat ~/.passwd | sudo -S make install
+  cd ${CURRENT_PATH}
   rm ctags-5.8.tar.gz
 fi
 
