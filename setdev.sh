@@ -9,18 +9,17 @@ if ! [ -d $INSTALL_PATH ]
 then
     mkdir ${INSTALL_PATH}
 fi
+PACKAGE_CMD=$1
 
-PACKAGE_CMD=$0
-
-#Install some softwares
-echo Y > tmp.file > /dev/null
-if ! type 'tmux'
+#Install tmux
+echo Y > tmp.file
+if ! type 'tmux' > /dev/null
 then
   cat ~/.passwd | sudo -S ${PACKAGE_CMD} install tmux < tmp.file
 fi
 
 ##Install zsh and oh-my-zsh and zsh-plugins
-if ! type 'tmux' > /dev/null
+if ! type 'zsh' > /dev/null
 then
   cat ~/.passwd | sudo -S ${PACKAGE_CMD} install zsh < tmp.file
   cat ~/.passwd | sudo -S chsh -s /bin/zsh
@@ -29,8 +28,11 @@ fi
 
 if ! type 'autojump' > /dev/null
 then
-  cat ~/.passwd | sudo -S ${PACKAGE_CMD} install autojump < tmp.file
+  git clone git://github.com/joelthelion/autojump.git ${INSTALL_PATH}/autojump
+  cd ${INSTALL_PATH}/autojump && ./install.py
 fi
+
+rm tmp.file
 
 #Install ctags
 if ! type 'ctags' > /dev/null
@@ -48,9 +50,9 @@ fi
 
 backup_date=`date +%F`
 function TryBackupExistedDotFiles() {
-  if ! [ -f $0 ]
+  if [ -f $1 ]
   then
-    mv $0 $0-${backup_date}
+    mv $1 $1-${backup_date}
   fi
 }
 
@@ -61,26 +63,24 @@ TryBackupExistedDotFiles ~/.vimrc
 TryBackupExistedDotFiles ~/.zshrc
 TryBackupExistedDotFiles ~/.tmux.conf
 TryBackupExistedDotFiles ~/.octaverc.conf
+TryBackupExistedDotFiles ~/.mytmuxlayout
+TryBackupExistedDotFiles ~/.octaverc
 
 
-ln -s ${absolute_path}/.vimrc ~/.vimrc
 ln -s ${absolute_path}/.zshrc ~/.zshrc
 ln -s ${absolute_path}/.tmux.conf ~/.tmux.conf
 ln -s ${absolute_path}/.mytmuxlayout ~/.mytmuxlayout
 ln -s ${absolute_path}/.octaverc ~/.octaverc
+ln -s ${absolute_path}/.vimrc ~/.vimrc
+
 echo > ~/.specific_zshrc
 
-
-#Set the recycle bin
-if ! [ -d ~/recycle_bin ]
+#Install all vim plugins
+if ! [ -d ~/.vim/bundle/Vundle.vim ]
 then
-    mkdir ~/recycle_bin
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
-tmp="alias rm='python ${CURRENT_PATH}/recycle.py ~/recycle_bin '~ ~/install ~/git' '"
-echo $tmp >> ~/.zshrc
-source ~/.zshrc
-
-rm tmp.file
+vim +PluginInstall +qall
 
 #Generate SSH key
 if ! [ -d ~/.ssh ]
