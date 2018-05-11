@@ -26,7 +26,7 @@ then
   sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
 
-if ! type 'autojump' > /dev/null
+if ! [ -d $HOME/.autojump ]
 then
   git clone git://github.com/joelthelion/autojump.git ${INSTALL_PATH}/autojump
   cd ${INSTALL_PATH}/autojump && ./install.py
