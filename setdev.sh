@@ -85,7 +85,7 @@ fi
 vim +PluginInstall +qall
 
 #Install zsh plugin
-ZSH_PLUGIN_HOME=~/.oh-my.zsh/custom/plugin
+ZSH_PLUGIN_HOME=~/.oh-my-zsh/custom/plugins
 
 if ! [ -d $ZSH_PLUGIN_HOME/zsh-autosuggestions ]
 then
