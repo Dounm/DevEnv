@@ -14,3 +14,4 @@ Include these file:
   - .tmux.conf
   - .mytmuxlayout
 - .xmodmaprc
+- .octaverc
