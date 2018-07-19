@@ -12,6 +12,7 @@ Plugin 'taglist.vim'
 Plugin 'tcomment'
 Plugin 'The-NERD-tree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Mark'
 
 call vundle#end()
 filetype plugin indent on
