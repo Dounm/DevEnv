@@ -1,6 +1,8 @@
 # DevEnv
 Set development environment on a new device quickly for Dounm
-just run 'sh setdev.sh' and then all are done!
+Steps:
+1. sh setdev.sh
+2. source ~/.zshrc
 
 ## Dotfiles
 All my dot files I used!
@@ -12,3 +14,4 @@ Include these file:
   - .tmux.conf
   - .mytmuxlayout
 - .xmodmaprc
+- .octaverc
