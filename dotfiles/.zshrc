@@ -124,6 +124,8 @@ bindkey " " magic-space
 alias rm='python ${HOME}/workspace/git/DevEnv/recycle.py ~/recycle_bin '~ ~/install ~/git' '
 alias dir="find . | grep -v -E '(.git)'"
 alias ag='alias | grep '
+alias gpull='git pull origin master'
+alias gpush='git push origin master'
 
 #256color
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
