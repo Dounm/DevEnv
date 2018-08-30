@@ -54,6 +54,7 @@ map <F7> :!g++ %:t -o -std=c++11 -Wall %:r<Enter>
 map <F8> :!./%:r<enter>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Refer: https://www.zhihu.com/question/47691414/answer/373700711
 
 " install vim-plug if need
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -66,11 +67,13 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tomasr/molokai'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-scripts/Mark'
 Plug 'vim-scripts/taglist.vim'
+Plug 'w0rp/ale'
 call plug#end()
 
 " molokai
@@ -88,7 +91,7 @@ let Tlist_WinWidth = 35 "set the width of taglist window, default is 30
 nnoremap <silent> <F9> :TlistToggle<cr>
 
 " ctags
-set tags+=./tags,../tags,../../tags,../../../tags,/home/niuchong/workspace/git/oneflow/oneflow/core/tags
+set tags+=./tags;,tags " './tags;' means find tags in cur file dir or dir above recursively
 
 " nerd-tree
 let NERDTreeWinPos='left'
@@ -108,3 +111,33 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
+" vim-guntenags
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_ctags_tagfile = 'tags'
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" ale
+" when work with c/c++, clang cannot found headers properly,
+" so we need to export CPATH=the_include_path
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
