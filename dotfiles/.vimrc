@@ -49,7 +49,6 @@ inoremap ' ''<ESC>i
 inoremap <C-e> <C-o>$
 
 
-
 map <F7> :!g++ %:t -o -std=c++11 -Wall %:r<Enter>
 map <F8> :!./%:r<enter>
 
@@ -75,6 +74,8 @@ Plug 'vim-scripts/Mark'
 Plug 'vim-scripts/taglist.vim'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'Shougo/echodoc.vim'
 call plug#end()
 
 " molokai
@@ -143,3 +144,6 @@ let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+
+" echodoc
+" set noshowmode " not show current mode, leave space for echodoc
