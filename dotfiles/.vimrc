@@ -74,6 +74,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-scripts/Mark'
 Plug 'vim-scripts/taglist.vim'
 Plug 'w0rp/ale'
+Plug 'mhinz/vim-signify'
 call plug#end()
 
 " molokai
@@ -129,6 +130,7 @@ endif
 " ale
 " when work with c/c++, clang cannot found headers properly,
 " so we need to export CPATH=the_include_path
+let g:ale_linters = { 'cpp': ['cppcheck', 'gcc'] }
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
 let g:ale_lint_delay = 500
