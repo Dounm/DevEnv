@@ -51,7 +51,7 @@ fi
 #Set the dotfiles
 
 backup_date=`date +%F`
-function TryBackupExistedDotFiles() {
+TryBackupExistedDotFiles() {
   if [ -f $1 ]
   then
     mv $1 $1-${backup_date}
