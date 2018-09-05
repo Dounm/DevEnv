@@ -53,6 +53,53 @@ map <F7> :!g++ %:t -o -std=c++11 -Wall %:r<Enter>
 map <F8> :!./%:r<enter>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Refer: http://www.skywind.me/blog/archives/2021
+" enable ALT key in vim
+function! Terminal_MetaMode(mode)
+    set ttimeout
+    if $TMUX != ''
+        set ttimeoutlen=30
+    elseif &ttimeoutlen > 80 || &ttimeoutlen <= 0
+        set ttimeoutlen=80
+    endif
+    if has('nvim') || has('gui_running')
+        return
+    endif
+    function! s:metacode(mode, key)
+        if a:mode == 0
+            exec "set <M-".a:key.">=\e".a:key
+        else
+            exec "set <M-".a:key.">=\e]{0}".a:key."~"
+        endif
+    endfunc
+    for i in range(10)
+        call s:metacode(a:mode, nr2char(char2nr('0') + i))
+    endfor
+    for i in range(26)
+        call s:metacode(a:mode, nr2char(char2nr('a') + i))
+        call s:metacode(a:mode, nr2char(char2nr('A') + i))
+    endfor
+    if a:mode != 0
+        for c in [',', '.', '/', ';', '[', ']', '{', '}']
+            call s:metacode(a:mode, c)
+        endfor
+        for c in ['?', ':', '-', '_']
+            call s:metacode(a:mode, c)
+        endfor
+    else
+        for c in [',', '.', '/', ';', '{', '}']
+            call s:metacode(a:mode, c)
+        endfor
+        for c in ['?', ':', '-', '_']
+            call s:metacode(a:mode, c)
+        endfor
+    endif
+endfunc
+
+call Terminal_MetaMode(0)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Refer: https://www.zhihu.com/question/47691414/answer/373700711
 
 " install vim-plug if need
@@ -74,7 +121,7 @@ Plug 'vim-scripts/Mark'
 Plug 'vim-scripts/taglist.vim'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
-" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'Shougo/echodoc.vim'
 call plug#end()
 
@@ -147,3 +194,6 @@ let g:ale_cpp_cppcheck_options = ''
 
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
+
+" leaderF
+noremap <m-p> :LeaderfFunction!<cr>
