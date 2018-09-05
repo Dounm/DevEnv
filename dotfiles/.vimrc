@@ -56,6 +56,7 @@ map <F8> :!./%:r<enter>
 
 " Refer: http://www.skywind.me/blog/archives/2021
 " enable ALT key in vim
+" just like Ctrl as 'c-' in vimrc, Alt is as 'm-'
 function! Terminal_MetaMode(mode)
     set ttimeout
     if $TMUX != ''
@@ -118,10 +119,12 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-scripts/Mark'
-Plug 'vim-scripts/taglist.vim'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'vim-scripts/a.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'sgur/vim-textobj-parameter'
 " Plug 'Shougo/echodoc.vim'
 call plug#end()
 
@@ -196,4 +199,7 @@ let g:ale_cpp_cppcheck_options = ''
 " set noshowmode " not show current mode, leave space for echodoc
 
 " leaderF
-noremap <m-p> :LeaderfFunction!<cr>
+noremap <m-p> :LeaderfFunction<cr>
+let g:Lf_WindowHeight = 0.30
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PreviewResult = { 'Function': 0 }
