@@ -77,26 +77,6 @@ ln -s ${absolute_path}/.vimrc ~/.vimrc
 
 echo > ~/.specific_zshrc
 
-#Install all vim plugins
-if ! [ -d ~/.vim/bundle/Vundle.vim ]
-then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-vim +PluginInstall +qall
-
-#Install zsh plugin
-ZSH_PLUGIN_HOME=~/.oh-my-zsh/custom/plugins
-
-if ! [ -d $ZSH_PLUGIN_HOME/zsh-autosuggestions ]
-then
-  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGIN_HOME/zsh-autosuggestions
-fi
-
-if ! [ -d $ZSH_PLUGIN_HOME/zsh-syntax-highlighting ]
-then
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_PLUGIN_HOME/zsh-syntax-highlighting
-fi
-
 #Generate SSH key
 if ! [ -d ~/.ssh ]
 then
