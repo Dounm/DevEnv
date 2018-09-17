@@ -10,8 +10,15 @@ set bsdir=buffer
 filetype plugin on
 syntax on
 
+set showcmd
+filetype indent on
+
 set number
 set relativenumber
+
+" highlight tabs and trailing spaces
+set listchars=tab:>-,trail:-
+set list
 
 " Use spaces instead of tabs
 set expandtab
@@ -26,7 +33,7 @@ set incsearch
 set hls
 set backspace=indent,eol,start
 
-let mapleader = "," " the <leader> in docs, default is \
+let mapleader = "," " the <Leader> in docs, default is \
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -125,7 +132,9 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
-" Plug 'Shougo/echodoc.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'Shougo/echodoc.vim'
+Plug 'AndrewRadev/linediff.vim'
 call plug#end()
 
 " molokai
@@ -197,9 +206,42 @@ let g:ale_cpp_cppcheck_options = ''
 
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
+set cmdheight=2
 
 " leaderF
 noremap <m-p> :LeaderfFunction<cr>
 let g:Lf_WindowHeight = 0.30
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = { 'Function': 0 }
+
+" YouCompleteMe
+" Refer: https://zhuanlan.zhihu.com/p/33046090
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_min_num_of_chars_for_completion = 99
+let g:ycm_min_num_identifier_candidate_chars = 5
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_strings=1
+let g:ycm_key_invoke_completion = '<c-z>'
+set completeopt=menu,menuone
+
+noremap <c-z> <NOP>
+
+let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+let g:ycm_filetype_whitelist = { 
+			\ "c":1,
+			\ "cpp":1, 
+			\ "objc":1,
+			\ "sh":1,
+			\ "zsh":1,
+			\ "zimbu":1,
+			\ }
+
+" Mark
+" cannot use noremap for Leader
+nmap <Leader>j <Leader>*
+nmap <Leader>k <Leader>#
