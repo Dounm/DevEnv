@@ -59,6 +59,13 @@ inoremap <C-e> <C-o>$
 map <F7> :!g++ %:t -o -std=c++11 -Wall %:r<Enter>
 map <F8> :!./%:r<enter>
 
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
+    autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+  augroup END
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Refer: http://www.skywind.me/blog/archives/2021
@@ -135,6 +142,7 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/echodoc.vim'
 Plug 'AndrewRadev/linediff.vim'
+Plug 'tpope/vim-abolish'
 call plug#end()
 
 " molokai
@@ -232,7 +240,6 @@ let g:ycm_semantic_triggers =  {
 			\ }
 let g:ycm_filetype_whitelist = { 
 			\ "c":1,
-			\ "cpp":1, 
 			\ "objc":1,
 			\ "sh":1,
 			\ "zsh":1,
@@ -243,3 +250,7 @@ let g:ycm_filetype_whitelist = {
 " cannot use noremap for Leader
 nmap <Leader>j <Leader>*
 nmap <Leader>k <Leader>#
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/.specific_vimrc
