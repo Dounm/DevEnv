@@ -1,5 +1,4 @@
-set nocompatible
-set foldmethod=syntax
+
 set nofoldenable
 set fileencodings=utf-8
 
@@ -161,6 +160,10 @@ nnoremap <silent> <F9> :TlistToggle<cr>
 
 " ctags
 set tags+=./tags;,tags " './tags;' means find tags in cur file dir or dir above recursively
+map <C-N> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" Ctrl+N : open the def in a new tab
+" Ctrl+\ : open the def in a vertical split
 
 " nerd-tree
 let NERDTreeWinPos='left'
