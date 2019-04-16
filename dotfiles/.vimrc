@@ -138,7 +138,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/echodoc.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
