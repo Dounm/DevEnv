@@ -44,6 +44,7 @@ imap <BackSpace> <left><del>
 imap jj <ESC>
 
 inoremap ( ()<ESC>i
+inoremap < <><ESC>i
 inoremap [ []<ESC>i
 inoremap { {<enter>}<ESC>O
 
@@ -142,6 +143,7 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'Shougo/echodoc.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " molokai
