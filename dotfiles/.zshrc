@@ -55,8 +55,11 @@ plugins=(git tmux zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="$HOME_PATH/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+# add user installed softwares
+export PATH=$HOME_PATH/usr/local/bin:$PATH
+# add pip --user installed bins
+export PATH=$HOME_PATH/.local/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
