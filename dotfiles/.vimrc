@@ -35,6 +35,7 @@ set backspace=indent,eol,start
 let mapleader = "," " the <Leader> in docs, default is \
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set timeoutlen=300
 
 imap <C-L> <right>
 " imap <C-H> <left>
@@ -45,6 +46,7 @@ imap jj <ESC>
 
 inoremap ( ()<ESC>i
 inoremap < <><ESC>i
+inoremap << <<
 inoremap [ []<ESC>i
 inoremap { {<enter>}<ESC>O
 
