@@ -24,7 +24,7 @@ para_set -= rm_para_set
 
 intersec_set = deny_set&para_set
 for item in intersec_set:
-    print 'the <%s> cannot be removed due to the config' % item
+    print('the <%s> cannot be removed due to the config' % itema)
 
 para_set -= intersec_set
 
