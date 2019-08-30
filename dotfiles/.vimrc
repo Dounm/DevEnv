@@ -1,6 +1,7 @@
 
 set nofoldenable
-set fileencodings=utf-8
+set fileencodings=latin1 "latin1 is better for code
+set encoding=latin1
 
 set nobackup
 set formatoptions=tcqro
@@ -45,6 +46,7 @@ imap <BackSpace> <left><del>
 imap jj <ESC>
 
 inoremap ( ()<ESC>i
+inoremap (( (
 inoremap < <><ESC>i
 inoremap << <<
 inoremap [ []<ESC>i
@@ -130,19 +132,19 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tomasr/molokai'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-scripts/Mark'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
 " Plug 'Valloric/YouCompleteMe'
-Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/echodoc.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
 Plug 'Yggdroot/indentLine'
