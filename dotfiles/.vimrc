@@ -148,6 +148,8 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
 Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-surround'
+Plug 'andymass/vim-matchup'
 call plug#end()
 
 " molokai
@@ -260,6 +262,9 @@ let g:ycm_filetype_whitelist = {
 nmap <Leader>j <Leader>*
 nmap <Leader>k <Leader>#
 
+" vim-matchup
+let g:matchup_matchparen_deferred = 1
+let g:matchup_matchparen_hi_surround_always = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.specific_vimrc
