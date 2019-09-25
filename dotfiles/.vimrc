@@ -38,12 +38,17 @@ let mapleader = "," " the <Leader> in docs, default is \
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set timeoutlen=300
 
+map te :tabe
+map tn :tabn<CR>
+map tp :tabp<CR>
+map tc :tabc<CR>
+
 imap <C-L> <right>
 " imap <C-H> <left>
 imap <C-J> <down>
 imap <C-K> <up>
 imap <BackSpace> <left><del>
-imap jj <ESC>
+imap jk <ESC>
 
 inoremap ( ()<ESC>i
 inoremap (( (
@@ -149,7 +154,7 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
-Plug 'andymass/vim-matchup'
+" Plug 'andymass/vim-matchup'
 call plug#end()
 
 " molokai
@@ -263,8 +268,11 @@ nmap <Leader>j <Leader>*
 nmap <Leader>k <Leader>#
 
 " vim-matchup
-let g:matchup_matchparen_deferred = 1
-let g:matchup_matchparen_hi_surround_always = 1
+" let g:matchup_matchparen_deferred = 1
+" let g:matchup_matchparen_hi_surround_always = 1
+
+" vim-indentLine
+" :IndentLinesToggle
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.specific_vimrc
