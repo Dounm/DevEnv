@@ -1,7 +1,7 @@
 
 set nofoldenable
-set fileencodings=latin1 "latin1 is better for code
-set encoding=latin1
+set fileencodings=utf-8
+set encoding=utf-8
 
 set nobackup
 set formatoptions=tcqro
@@ -48,7 +48,7 @@ imap <C-L> <right>
 imap <C-J> <down>
 imap <C-K> <up>
 imap <BackSpace> <left><del>
-imap jk <ESC>
+imap jj <ESC>
 
 inoremap ( ()<ESC>i
 inoremap (( (
@@ -141,7 +141,7 @@ Plug 'tomasr/molokai'
 Plug 'scrooloose/nerdcommenter'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'vim-scripts/Mark'
+Plug 'vim-scripts/Mark--Karkat'
 " Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -155,6 +155,7 @@ Plug 'tpope/vim-abolish'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 " Plug 'andymass/vim-matchup'
+Plug 'zxqfl/tabnine-vim'
 call plug#end()
 
 " molokai
@@ -214,53 +215,63 @@ endif
 " ale
 " when work with c/c++, clang cannot found headers properly,
 " so we need to export CPATH=the_include_path
-let g:ale_linters = { 'cpp': ['cppcheck', 'gcc'] }
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:airline#extensions#ale#enabled = 1
+" let g:ale_linters = { 'cpp': ['cppcheck', 'gcc'] }
+" let g:ale_completion_delay = 500
+" let g:ale_echo_delay = 20
+" let g:ale_lint_delay = 500
+" let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+" let g:ale_lint_on_text_changed = 'normal'
+" let g:ale_lint_on_insert_leave = 1
+" let g:airline#extensions#ale#enabled = 1
 
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
+" let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+" let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+" let g:ale_c_cppcheck_options = ''
+" let g:ale_cpp_cppcheck_options = ''
 
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
 set cmdheight=2
 
-" leaderF
+" LeaderF
 noremap <m-p> :LeaderfFunction<cr>
 let g:Lf_WindowHeight = 0.30
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = { 'Function': 0 }
+" search word under cursor, the pattern is treated as regex
+noremap <leader>w :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR>
+" search word under cursor literally only in current buffer
+noremap <leader>wb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally, don't quit LeaderF after accepting an entry
+xnoremap <leader>v :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+" search visually selected text literally, don't quit LeaderF after accepting an entry
+xnoremap <leader>vb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+" recall last search. If the result window is closed, reopen it.
+noremap <leader>h :<C-U>Leaderf rg --stayOpen --recall<CR>
 
 " YouCompleteMe
 " Refer: https://zhuanlan.zhihu.com/p/33046090
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_of_chars_for_completion = 99
-let g:ycm_min_num_identifier_candidate_chars = 5
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
-set completeopt=menu,menuone
+" let g:ycm_add_preview_to_completeopt = 0
+" let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_server_log_level = 'info'
+" let g:ycm_min_num_of_chars_for_completion = 99
+" let g:ycm_min_num_identifier_candidate_chars = 5
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_complete_in_strings=1
+" let g:ycm_key_invoke_completion = '<c-z>'
+" set completeopt=menu,menuone
 
-let g:ycm_semantic_triggers =  {
-    \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-    \ 'cs,lua,javascript': ['re!\w{2}'],
-    \ }
-let g:ycm_filetype_whitelist = {
-    \ "c":1,
-    \ "objc":1,
-    \ "sh":1,
-    \ "zsh":1,
-    \ "zimbu":1,
-\ }
+" let g:ycm_semantic_triggers =  {
+"     \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+"     \ 'cs,lua,javascript': ['re!\w{2}'],
+"     \ }
+" let g:ycm_filetype_whitelist = {
+"     \ "c":1,
+"     \ "objc":1,
+"     \ "sh":1,
+"     \ "zsh":1,
+"     \ "zimbu":1,
+" \ }
 
 " Mark
 " cannot use noremap for Leader
