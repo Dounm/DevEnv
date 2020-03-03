@@ -16,6 +16,9 @@ filetype indent on
 set number
 set relativenumber
 
+" disable preview window when coding python
+set completeopt-=preview
+
 " highlight tabs and trailing spaces
 set listchars=tab:>-,trail:-
 set list
@@ -55,7 +58,7 @@ inoremap (( (
 inoremap < <><ESC>i
 inoremap << <<
 inoremap [ []<ESC>i
-inoremap { {<enter>}<ESC>O
+inoremap { {}<ESC>i
 
 inoremap " ""<ESC>i
 inoremap ' ''<ESC>i
@@ -137,10 +140,10 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tomasr/molokai'
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'preservim/nerdtree'
 Plug 'vim-scripts/Mark--Karkat'
 " Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
@@ -183,7 +186,9 @@ map <C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 let NERDTreeWinPos='left'
 let NERDTreeAutoCenter=1
 let NERDTreeShowLineNumber=1
-noremap <F6> :NERDTreeToggle<CR>
+map <F6> :NERDTreeToggle<CR>
+" close vim if the only window left is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
