@@ -74,6 +74,7 @@ ln -s ${absolute_path}/.tmux.conf ~/.tmux.conf
 ln -s ${absolute_path}/.mytmuxlayout ~/.mytmuxlayout
 ln -s ${absolute_path}/.octaverc ~/.octaverc
 ln -s ${absolute_path}/.vimrc ~/.vimrc
+ln -s `pwd`/recycle.py ~/.recycle.py
 
 echo > ~/.specific_zshrc
 
