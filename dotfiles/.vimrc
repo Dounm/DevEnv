@@ -145,13 +145,13 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/nerdtree'
 Plug 'vim-scripts/Mark--Karkat'
-" Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 " Plug 'Shougo/echodoc.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
@@ -218,21 +218,19 @@ if !isdirectory(s:vim_tags)
 endif
 
 " ale
-" when work with c/c++, clang cannot found headers properly,
-" so we need to export CPATH=the_include_path
-" let g:ale_linters = { 'cpp': ['cppcheck', 'gcc'] }
-" let g:ale_completion_delay = 500
-" let g:ale_echo_delay = 20
-" let g:ale_lint_delay = 500
-" let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-" let g:ale_lint_on_text_changed = 'normal'
-" let g:ale_lint_on_insert_leave = 1
-" let g:airline#extensions#ale#enabled = 1
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
 
-" let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-" let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-" let g:ale_c_cppcheck_options = ''
-" let g:ale_cpp_cppcheck_options = ''
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
 
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
