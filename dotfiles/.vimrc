@@ -238,13 +238,14 @@ set cmdheight=2
 
 " LeaderF
 noremap <m-p> :LeaderfFunction<cr>
+noremap <leader>g :LeaderfMru<cr>
 let g:Lf_WindowHeight = 0.30
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = { 'Function': 0 }
 " search word under cursor, the pattern is treated as regex
-noremap <leader>w :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR>
+noremap <leader>w :<C-U><C-R>=printf("Leaderf rg -e '%s' ", expand("<cword>"))<CR>
 " search word under cursor literally only in current buffer
-noremap <leader>wb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <leader>wb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer -e '%s' ", expand("<cword>"))<CR>
 " search visually selected text literally, don't quit LeaderF after accepting an entry
 xnoremap <leader>v :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
 " search visually selected text literally, don't quit LeaderF after accepting an entry
