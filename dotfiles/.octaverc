@@ -1,3 +1,0 @@
-setenv("GNUTERM", "X11")
-PS1('>>')
-graphics_toolkit('gnuplot')
