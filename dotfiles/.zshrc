@@ -130,6 +130,8 @@ alias ag='alias | grep '
 alias gpull='git pull origin master'
 alias gpush='git push origin master'
 
+alias python='python3'
+
 #256color
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
