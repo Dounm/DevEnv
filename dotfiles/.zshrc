@@ -137,10 +137,6 @@ else
     export TERM='xterm-color'
 fi
 
-#autojump
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
-autoload -U compinit && compinit -u
-
 #forbit zsh to expand regex *
 setopt no_nomatch
 
