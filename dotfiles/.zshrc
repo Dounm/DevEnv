@@ -114,6 +114,9 @@ alias vszsh='vim ~/.specific_zshrc'
 alias vvim='vim ~/.vimrc' 
 alias vtmux='vim ~/.tmux.conf'
 
+alias ca='conda activate'
+alias da='conda deactivate'
+
 export EDITOR="vim"  #use vim to edit command in zsh
 bindkey -v
 bindkey '^R' history-incremental-search-backward
@@ -129,6 +132,7 @@ alias dir="find . | grep -v -E '(.git)'"
 alias ag='alias | grep '
 alias gpull='git pull origin master'
 alias gpush='git push origin master'
+alias j='nocorrect j'
 
 #256color
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
