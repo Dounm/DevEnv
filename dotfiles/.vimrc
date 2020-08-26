@@ -162,7 +162,7 @@ Plug 'zxqfl/tabnine-vim'
 call plug#end()
 
 " molokai
-colors desert
+colors molokai
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
