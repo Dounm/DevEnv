@@ -146,4 +146,7 @@ setopt no_nomatch
 
 bindkey '^p' autosuggest-accept
 
+#enable 256 color
+export TERM=xterm-256color
+
 source ~/.specific_zshrc
