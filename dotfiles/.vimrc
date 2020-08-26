@@ -162,7 +162,7 @@ Plug 'zxqfl/tabnine-vim'
 call plug#end()
 
 " molokai
-colors molokai 
+colors molokai
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
@@ -281,6 +281,7 @@ noremap <leader>h :<C-U>Leaderf rg --stayOpen --recall<CR>
 " cannot use noremap for Leader
 nmap <Leader>j <Leader>*
 nmap <Leader>k <Leader>#
+nmap <Leader>c :MarkClear<CR>
 
 " vim-matchup
 " let g:matchup_matchparen_deferred = 1
