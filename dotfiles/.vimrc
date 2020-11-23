@@ -151,7 +151,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 " Plug 'Shougo/echodoc.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
@@ -192,7 +192,7 @@ map <F6> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " nerdtree-git-plugin
-let g:NERDTreeGitStatusIndicatorMapCusto = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
