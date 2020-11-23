@@ -134,6 +134,11 @@ alias gpull='git pull origin master'
 alias gpush='git push origin master'
 alias j='nocorrect j'
 
+#color
+alias tree='tree -C' #force color even if out is pipe not tty
+alias rg='rg -p'
+alias watch_gpu='watch --color gpustat --force-color'
+
 #256color
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
     export TERM='xterm-256color'
@@ -150,3 +155,7 @@ bindkey '^p' autosuggest-accept
 export TERM=xterm-256color
 
 source ~/.specific_zshrc
+
+export C_INCLUDE_PATH=$CONDA_HOME/include:$C_INCLUDE_PATH
+export LD_LIBRARY_PATH=$CONDA_HOME/lib/:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$CONDA_HOME/lib/:$LIBRARY_PATH
