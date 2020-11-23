@@ -159,6 +159,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 " Plug 'andymass/vim-matchup'
 Plug 'zxqfl/tabnine-vim'
+Plug 'rhysd/vim-clang-format'
 call plug#end()
 
 " molokai
@@ -191,7 +192,7 @@ map <F6> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " nerdtree-git-plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCusto = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -242,6 +243,8 @@ noremap <leader>g :LeaderfMru<cr>
 let g:Lf_WindowHeight = 0.30
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = { 'Function': 0 }
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_DefaultExternalTool = 'rg'
 " search word under cursor, the pattern is treated as regex
 noremap <leader>w :<C-U><C-R>=printf("Leaderf rg -e '%s' ", expand("<cword>"))<CR>
 " search word under cursor literally only in current buffer
@@ -252,6 +255,9 @@ xnoremap <leader>v :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf
 xnoremap <leader>vb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer --stayOpen -e %s ", leaderf#Rg#visual())<CR>
 " recall last search. If the result window is closed, reopen it.
 noremap <leader>h :<C-U>Leaderf rg --stayOpen --recall<CR>
+
+" vim-clang-format
+let g:clang_format#command = 'clang-format-4.0'
 
 " YouCompleteMe
 " Refer: https://zhuanlan.zhihu.com/p/33046090
