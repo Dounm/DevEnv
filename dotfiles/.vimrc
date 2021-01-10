@@ -244,7 +244,8 @@ let g:ale_linters = { 'python': ['pylint'], 'cpp': ['clangtidy', 'cpplint'] }
 let g:ale_python_pylint_options = '--disable=C,bad-indentation'
 let g:ale_cpp_cpplint_options= '--filter=-build/header_guard,-legal --linelength=100'
 
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
+cmap fw ALEFix
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['add_blank_lines_for_python_control_statements',
