@@ -83,6 +83,14 @@ InstallAutoJump() {
   ./install.py
 }
 
+InstallGDBPrettyPrint() {
+  conda install -c conda-forge svn
+  cd $INSTALL_PATH
+  mkdir gdb-printer && cd gdb-printer && svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python
+  DOTFILE_PATH=$BASE_PATH/dotfiles
+  ln -s $DOTFILE_PATH/.gdbinit ~/.gdbinit
+}
+
 
 ## Main
 
@@ -91,4 +99,5 @@ InstallAutoJump() {
 # GenerateSSHkey
 # InstallConda
 # ConfigConda
-InstallAutoJump
+# InstallAutoJump
+InstallGDBPrettyPrint
