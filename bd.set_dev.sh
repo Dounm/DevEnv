@@ -91,6 +91,17 @@ InstallGDBPrettyPrint() {
   ln -s $DOTFILE_PATH/.gdbinit ~/.gdbinit
 }
 
+InstallVimRelated() {
+  # ln -s $BASE_PATH/dotfiles/vim-templates ~/.vim/templates
+
+  FTPLUGIN_PATH=~/.vim/after/
+  if ! [ -d $FTPLUGIN_PATH ]
+  then
+    mkdir $FTPLUGIN_PATH
+  fi
+  ln -s $BASE_PATH/dotfiles/vim-ftplugin $FTPLUGIN_PATH/ftplugin
+}
+
 
 ## Main
 
@@ -100,4 +111,5 @@ InstallGDBPrettyPrint() {
 # InstallConda
 # ConfigConda
 # InstallAutoJump
-InstallGDBPrettyPrint
+# InstallGDBPrettyPrint
+InstallVimRelated
