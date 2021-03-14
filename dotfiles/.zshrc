@@ -133,6 +133,7 @@ alias ag='alias | grep '
 alias gpull='git pull origin master'
 alias gpush='git push origin master'
 alias j='nocorrect j'
+alias git='nocorrect git'
 
 #color
 alias tree='tree -C' #force color even if out is pipe not tty

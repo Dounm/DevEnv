@@ -13,7 +13,10 @@ fi
 
 
 InstallZshRelated() {
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  if ! [ -d ~/.oh-my-zsh ]
+  then
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  fi
   ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
   git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
@@ -54,13 +57,16 @@ GenerateSSHkey() {
 }
 
 InstallConda() {
-  cd $INSTALL_PATH
-  curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-  bash Miniconda3-latest-Linux-x86_64.sh
+  if ! command -v conda &> /dev/null
+  then
+    cd $INSTALL_PATH
+    curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh
 
-  DOTFILE_PATH=$BASE_PATH/dotfiles
-  ln -s $DOTFILE_PATH/.condarc ~/.condarc
-  conda clean -i
+    DOTFILE_PATH=$BASE_PATH/dotfiles
+    ln -s $DOTFILE_PATH/.condarc ~/.condarc
+    conda clean -i
+  fi
 }
 
 ConfigConda() {
@@ -105,11 +111,11 @@ InstallVimRelated() {
 
 ## Main
 
-# InstallZshRelated
-# InstallDotFiles
-# GenerateSSHkey
-# InstallConda
-# ConfigConda
-# InstallAutoJump
-# InstallGDBPrettyPrint
+InstallConda
+InstallZshRelated
+InstallDotFiles
+GenerateSSHkey
+ConfigConda
+InstallAutoJump
+InstallGDBPrettyPrint
 InstallVimRelated

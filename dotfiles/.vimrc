@@ -256,7 +256,7 @@ let g:ale_fixers = {
 let g:ale_python_autopep8_options = '--max-line-length 100 --indent-size 2'
 let g:ale_cpp_clangformat_options = '-style=file'
 let g:ale_cpp_clangtidy_options = '-I/data00/home/niuchong/git/jaguar2-work/jaguar'
-let g:ale_cpp_clangtidy_checks = ['*', '-llvm-header-guard']
+let g:ale_cpp_clangtidy_checks = ['*', '-llvm-header-guard', '-misc-unused-parameters']
 
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
