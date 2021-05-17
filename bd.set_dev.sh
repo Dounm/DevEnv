@@ -98,7 +98,7 @@ InstallGDBPrettyPrint() {
 }
 
 InstallVimRelated() {
-  # ln -s $BASE_PATH/dotfiles/vim-templates ~/.vim/templates
+  ln -s $BASE_PATH/dotfiles/vim-templates ~/.vim/templates
 
   FTPLUGIN_PATH=~/.vim/after/
   if ! [ -d $FTPLUGIN_PATH ]
