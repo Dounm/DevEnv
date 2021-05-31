@@ -108,6 +108,10 @@ InstallVimRelated() {
   ln -s $BASE_PATH/dotfiles/vim-ftplugin $FTPLUGIN_PATH/ftplugin
 }
 
+InstallPythonRelated() {
+  pip install rich # https://github.com/willmcgugan/rich
+}
+
 
 ## Main
 
@@ -119,3 +123,4 @@ ConfigConda
 InstallAutoJump
 InstallGDBPrettyPrint
 InstallVimRelated
+InstallPythonRelated
