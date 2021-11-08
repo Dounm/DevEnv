@@ -133,6 +133,12 @@ alias ag='alias | grep '
 alias gpull='git pull origin master'
 alias gpush='git push origin master'
 alias j='nocorrect j'
+alias git='nocorrect git'
+
+#color
+alias tree='tree -C' #force color even if out is pipe not tty
+alias rg='rg -p'
+alias watch_gpu='watch --color gpustat --force-color'
 
 alias python='python3'
 
@@ -152,3 +158,7 @@ bindkey '^p' autosuggest-accept
 export TERM=xterm-256color
 
 source ~/.specific_zshrc
+
+export C_INCLUDE_PATH=$CONDA_HOME/include:$C_INCLUDE_PATH
+export LD_LIBRARY_PATH=$CONDA_HOME/lib/:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$CONDA_HOME/lib/:$LIBRARY_PATH

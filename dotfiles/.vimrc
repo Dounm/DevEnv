@@ -3,6 +3,10 @@ set nofoldenable
 set fileencodings=utf-8
 set encoding=utf-8
 
+set foldmethod=indent
+set foldlevel=99
+noremap <space> za
+
 set nobackup
 set formatoptions=tcqro
 set bsdir=buffer
@@ -151,7 +155,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 " Plug 'Shougo/echodoc.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
@@ -159,10 +163,15 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 " Plug 'andymass/vim-matchup'
 Plug 'zxqfl/tabnine-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
-" molokai
+" colorscheme
+set background=dark
 colors molokai
+" colors PaperColor
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
@@ -191,7 +200,7 @@ map <F6> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " nerdtree-git-plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -231,6 +240,23 @@ let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+let g:ale_linters = { 'python': ['pylint'], 'cpp': ['clangtidy', 'cpplint'] }
+let g:ale_python_pylint_options = '--disable=C,bad-indentation'
+let g:ale_cpp_cpplint_options= '--filter=-build/header_guard,-legal --linelength=100'
+
+" let g:ale_fix_on_save = 1
+cmap fw ALEFix
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['add_blank_lines_for_python_control_statements',
+\              'reorder-python-imports',
+\              'autopep8'],
+\   'cpp': ['clang-format', 'clangtidy'],
+\}
+let g:ale_python_autopep8_options = '--max-line-length 100 --indent-size 2'
+let g:ale_cpp_clangformat_options = '-style=file'
+let g:ale_cpp_clangtidy_options = '-I/data00/home/niuchong/git/jaguar2-work/jaguar'
+let g:ale_cpp_clangtidy_checks = ['*', '-llvm-header-guard', '-misc-unused-parameters']
 
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
@@ -242,6 +268,8 @@ noremap <leader>g :LeaderfMru<cr>
 let g:Lf_WindowHeight = 0.30
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = { 'Function': 0 }
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_DefaultExternalTool = 'rg'
 " search word under cursor, the pattern is treated as regex
 noremap <leader>w :<C-U><C-R>=printf("Leaderf rg -e '%s' ", expand("<cword>"))<CR>
 " search word under cursor literally only in current buffer
@@ -252,6 +280,9 @@ xnoremap <leader>v :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf
 xnoremap <leader>vb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer --stayOpen -e %s ", leaderf#Rg#visual())<CR>
 " recall last search. If the result window is closed, reopen it.
 noremap <leader>h :<C-U>Leaderf rg --stayOpen --recall<CR>
+
+" vim-clang-format
+let g:clang_format#command = 'clang-format-4.0'
 
 " YouCompleteMe
 " Refer: https://zhuanlan.zhihu.com/p/33046090
