@@ -70,7 +70,7 @@ InstallConda() {
 }
 
 ConfigConda() {
-  conda install -c conda-forge vim
+  # conda install -c conda-forge vim
   conda install -c conda-forge git
   conda install -c conda-forge tmux
   conda install -c conda-forge htop
@@ -115,10 +115,10 @@ InstallPythonRelated() {
 
 ## Main
 
-InstallConda
-InstallZshRelated
-InstallDotFiles
-GenerateSSHkey
+# InstallConda
+# InstallZshRelated
+# InstallDotFiles
+# GenerateSSHkey
 ConfigConda
 InstallAutoJump
 InstallGDBPrettyPrint

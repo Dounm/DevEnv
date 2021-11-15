@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bira"
+ZSH_THEME="amuse"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -92,8 +92,8 @@ alias cls='clear'
 alias ll='ls -l' 
 alias la='ls -la' 
 alias vi='vim' 
-alias grep='/usr/bin/grep --color=auto -n' 
 alias mv='mv -i'
+alias ip='nocorrect ipython'
  
 #used in zsh only, not bash 
 alias -s html=vim #input the *.html in the shell and it will open in vim 
@@ -132,7 +132,6 @@ alias dir="find . | grep -v -E '(.git)'"
 alias ag='alias | grep '
 alias gpull='git pull origin master'
 alias gpush='git push origin master'
-alias j='nocorrect j'
 alias git='nocorrect git'
 
 #color
@@ -157,8 +156,8 @@ bindkey '^p' autosuggest-accept
 #enable 256 color
 export TERM=xterm-256color
 
-source ~/.specific_zshrc
-
 export C_INCLUDE_PATH=$CONDA_HOME/include:$C_INCLUDE_PATH
 export LD_LIBRARY_PATH=$CONDA_HOME/lib/:$LD_LIBRARY_PATH
 export LIBRARY_PATH=$CONDA_HOME/lib/:$LIBRARY_PATH
+
+source ~/.specific_zshrc
