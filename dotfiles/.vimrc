@@ -146,10 +146,12 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tomasr/molokai'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/nerdtree'
-Plug 'vim-scripts/Mark--Karkat'
-Plug 'dense-analysis/ale'
+Plug 'inkarkat/vim-ingo-library'
+" depends on vim-ingo-library
+Plug 'inkarkat/vim-mark'
+" Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
@@ -166,6 +168,9 @@ Plug 'zxqfl/tabnine-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
+Plug 'liuchengxu/vista.vim'
+Plug 'sillybun/vim-repl'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " colorscheme
@@ -179,10 +184,10 @@ let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 
 " Taglist
-let Tlist_Exit_OnlyWindow = 1 "when only the taglist window is open, exit vim
-let Tlist_Use_Right_Window = 1 "let the taglist window show at the right of the window
-let Tlist_WinWidth = 35 "set the width of taglist window, default is 30
-nnoremap <silent> <F9> :TlistToggle<cr>
+" let Tlist_Exit_OnlyWindow = 1 "when only the taglist window is open, exit vim
+" let Tlist_Use_Right_Window = 1 "let the taglist window show at the right of the window
+" let Tlist_WinWidth = 35 "set the width of taglist window, default is 30
+" nnoremap <silent> <F9> :TlistToggle<cr>
 
 " ctags
 set tags+=./tags;,tags " './tags;' means find tags in cur file dir or dir above recursively
@@ -213,50 +218,50 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ }
 
 " vim-guntenags
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-let g:gutentags_ctags_tagfile = 'tags'
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
+" let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" let g:gutentags_ctags_tagfile = 'tags'
+" let s:vim_tags = expand('~/.cache/tags')
+" let g:gutentags_cache_dir = s:vim_tags
 
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+" let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+" let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+" let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-endif
+" if !isdirectory(s:vim_tags)
+"    silent! call mkdir(s:vim_tags, 'p')
+" endif
 
 " ale
-let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:airline#extensions#ale#enabled = 1
+" let g:ale_linters_explicit = 1
+" let g:ale_completion_delay = 500
+" let g:ale_echo_delay = 20
+" let g:ale_lint_delay = 500
+" let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+" let g:ale_lint_on_text_changed = 'normal'
+" let g:ale_lint_on_insert_leave = 1
+" let g:airline#extensions#ale#enabled = 1
 
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
-let g:ale_linters = { 'python': ['pylint'], 'cpp': ['clangtidy', 'cpplint'] }
-let g:ale_python_pylint_options = '--disable=C,bad-indentation'
-let g:ale_cpp_cpplint_options= '--filter=-build/header_guard,-legal --linelength=100'
+" let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+" let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+" let g:ale_c_cppcheck_options = ''
+" let g:ale_cpp_cppcheck_options = ''
+" let g:ale_linters = { 'python': ['pylint'], 'cpp': ['clangtidy', 'cpplint'] }
+" let g:ale_python_pylint_options = '--disable=C,bad-indentation'
+" let g:ale_cpp_cpplint_options= '--filter=-build/header_guard,-legal --linelength=100'
 
-" let g:ale_fix_on_save = 1
-cmap fw ALEFix
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['add_blank_lines_for_python_control_statements',
-\              'reorder-python-imports',
-\              'autopep8'],
-\   'cpp': ['clang-format', 'clangtidy'],
-\}
-let g:ale_python_autopep8_options = '--max-line-length 100 --indent-size 2'
-let g:ale_cpp_clangformat_options = '-style=file'
-let g:ale_cpp_clangtidy_options = '-I/data00/home/niuchong/git/jaguar2-work/jaguar'
-let g:ale_cpp_clangtidy_checks = ['*', '-llvm-header-guard', '-misc-unused-parameters']
+" " let g:ale_fix_on_save = 1
+" cmap fw ALEFix
+" let g:ale_fixers = {
+" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+" \   'python': ['add_blank_lines_for_python_control_statements',
+" \              'reorder-python-imports',
+" \              'autopep8'],
+" \   'cpp': ['clang-format', 'clangtidy'],
+" \}
+" let g:ale_python_autopep8_options = '--max-line-length 100 --indent-size 2'
+" let g:ale_cpp_clangformat_options = '-style=file'
+" let g:ale_cpp_clangtidy_options = '-I/data00/home/niuchong/git/jaguar2-work/jaguar'
+" let g:ale_cpp_clangtidy_checks = ['*', '-llvm-header-guard', '-misc-unused-parameters']
 
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
@@ -284,35 +289,16 @@ noremap <leader>h :<C-U>Leaderf rg --stayOpen --recall<CR>
 " vim-clang-format
 let g:clang_format#command = 'clang-format-4.0'
 
-" YouCompleteMe
-" Refer: https://zhuanlan.zhihu.com/p/33046090
-" let g:ycm_add_preview_to_completeopt = 0
-" let g:ycm_show_diagnostics_ui = 0
-" let g:ycm_server_log_level = 'info'
-" let g:ycm_min_num_of_chars_for_completion = 99
-" let g:ycm_min_num_identifier_candidate_chars = 5
-" let g:ycm_collect_identifiers_from_comments_and_strings = 1
-" let g:ycm_complete_in_strings=1
-" let g:ycm_key_invoke_completion = '<c-z>'
-" set completeopt=menu,menuone
-
-" let g:ycm_semantic_triggers =  {
-"     \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-"     \ 'cs,lua,javascript': ['re!\w{2}'],
-"     \ }
-" let g:ycm_filetype_whitelist = {
-"     \ "c":1,
-"     \ "objc":1,
-"     \ "sh":1,
-"     \ "zsh":1,
-"     \ "zimbu":1,
-" \ }
-
-" Mark
+" vim-mark
 " cannot use noremap for Leader
-nmap <Leader>j <Leader>*
-nmap <Leader>k <Leader>#
-nmap <Leader>c :MarkClear<CR>
+let g:mw_no_mappings = 1
+" must be map instead of nmap to support visual mapping
+map <Leader>m <Plug>MarkSet
+nmap <Leader>j <Plug>MarkSearchOrCurNext
+nmap <Leader>k <Plug>MarkSearchOrCurPrev
+nmap <Leader>c <Plug>MarkAllClear<CR>
+" nmap n <Plug>MarkSearchAnyOrDefaultNext
+" nmap N <Plug>MarkSearchAnyOrDefaultPrev
 
 " vim-matchup
 " let g:matchup_matchparen_deferred = 1
@@ -320,6 +306,44 @@ nmap <Leader>c :MarkClear<CR>
 
 " vim-indentLine
 " :IndentLinesToggle
+
+
+" vista.vim
+nmap <Leader>v :Vista<CR>
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'coc'
+let g:vista_sidebar_width=50
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+
+
+" vim-repl
+let g:repl_program = {
+            \   'python': 'ipython',
+            \   'default': 'zsh',
+            \   'r': 'R',
+            \   'lua': 'lua',
+            \   }
+let g:repl_predefine_python = {
+            \   'numpy': 'import numpy as np',
+            \   'matplotlib': 'from matplotlib import pyplot as plt'
+            \   }
+let g:repl_cursor_down = 1
+let g:repl_python_automerge = 1
+let g:repl_ipython_version = '7'
+nnoremap <leader>r :REPLToggle<Cr>
+autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
+autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
+autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
+let g:repl_position = 3
+let g:sendtorepl_invoke_key = "<leader>t"
+let g:repl_stayatrepl_when_open = 0
+
+"coc
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.specific_vimrc
