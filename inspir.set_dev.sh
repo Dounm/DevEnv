@@ -32,19 +32,19 @@ TryBackupExistedDotFiles() {
 InstallDotFiles() {
   backup_date=`date +%F`
   absolute_path=$BASE_PATH/dotfiles
-  
+
   TryBackupExistedDotFiles ~/.vimrc
   TryBackupExistedDotFiles ~/.zshrc
   TryBackupExistedDotFiles ~/.tmux.conf
   TryBackupExistedDotFiles ~/.mytmuxlayout
-  
-  
+
+
   ln -s ${absolute_path}/.zshrc ~/.zshrc
   ln -s ${absolute_path}/.tmux.conf ~/.tmux.conf
   ln -s ${absolute_path}/.mytmuxlayout ~/.mytmuxlayout
   ln -s ${absolute_path}/.vimrc ~/.vimrc
   ln -s `pwd`/recycle.py ~/.recycle.py
-  
+
   echo > ~/.specific_zshrc
   echo > ~/.specific_vimrc
 }
@@ -71,14 +71,14 @@ InstallConda() {
 
 ConfigConda() {
   # conda install -c conda-forge vim
-  conda install -c conda-forge git
+  # conda install -c conda-forge git
   conda install -c conda-forge tmux
-  conda install -c conda-forge htop
-  conda install -c conda-forge gdb
-  conda install -c conda-forge autopep8
-  conda install -c conda-forge curl
-  conda install -c conda-forge gpustat
-  conda install -c conda-forge pylint
+  # conda install -c conda-forge htop
+  # conda install -c conda-forge gdb
+  # conda install -c conda-forge autopep8
+  # conda install -c conda-forge curl
+  # conda install -c conda-forge gpustat
+  # conda install -c conda-forge pylint
   conda install -c conda-forge ripgrep
 }
 
@@ -109,18 +109,21 @@ InstallVimRelated() {
 }
 
 InstallPythonRelated() {
-  pip install rich # https://github.com/willmcgugan/rich
+  pip install rich
+  pip install ipython 
+  pip install regex
+  pip install pybind11
 }
 
 
 ## Main
 
 # InstallConda
-# InstallZshRelated
-# InstallDotFiles
-# GenerateSSHkey
-ConfigConda
-InstallAutoJump
-InstallGDBPrettyPrint
+InstallZshRelated
+InstallDotFiles
+GenerateSSHkey
+# InstallAutoJump
+# InstallGDBPrettyPrint
 InstallVimRelated
 InstallPythonRelated
+# ConfigConda
