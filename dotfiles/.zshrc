@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="amuse"
+ZSH_THEME="bira" # append `%{$fg_bold[gray]%}%*%{$reset_color%}` to PROMPT of bira.zsh-theme for time
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -141,6 +141,8 @@ alias rg='rg -p'
 alias watch_gpu='watch --color gpustat --force-color'
 
 alias python='python3'
+alias clr_recycle='/bin/rm -rf ~/recycle_bin/*'
+alias rm_core='/bin/rm -f core.*'
 
 #256color
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then

@@ -45,8 +45,8 @@ InstallDotFiles() {
   ln -s ${absolute_path}/.vimrc ~/.vimrc
   ln -s `pwd`/recycle.py ~/.recycle.py
 
-  echo > ~/.specific_zshrc
-  echo > ~/.specific_vimrc
+  # echo > ~/.specific_zshrc
+  # echo > ~/.specific_vimrc
 }
 
 GenerateSSHkey() {
@@ -113,6 +113,7 @@ InstallPythonRelated() {
   pip install ipython 
   pip install regex
   pip install pybind11
+  pip install ninja
 }
 
 
