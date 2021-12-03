@@ -323,8 +323,8 @@ let g:vista#renderer#icons = {
 
 "vim-fugitive
 "" support git diff --staged
-command Greview :Git! diff --staged
-nnoremap <leader>ds :Greview<cr>
+command Gd :Gvdiff
+command Gds :Git! diff --staged
 
 
 " vim-repl
@@ -385,6 +385,13 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Mappings for CoCList
 " Show all diagnostics.
