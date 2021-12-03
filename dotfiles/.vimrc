@@ -332,7 +332,8 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+"nmap <leader>rn <Plug>(coc-rename)
+command Rename :execute "normal \<Plug>(coc-rename)"
 
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
