@@ -172,6 +172,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'sillybun/vim-repl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " colorscheme
