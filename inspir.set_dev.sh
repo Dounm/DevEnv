@@ -121,6 +121,9 @@ InstallWithAptGet() {
 
   apt-get install clangd-9
   ln -s /usr/bin/clangd-9 /usr/bin/clangd
+
+  # install Coc related
+  curl -sL install-node.vercel.app/lts | bash 
 }
 
 
