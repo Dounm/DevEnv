@@ -337,7 +337,10 @@ command Rename :execute "normal \<Plug>(coc-rename)"
 
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
+" Remap for format current line
 nmap <leader>f  <Plug>(coc-format-selected)
+" Use `:Format` to format the whole file
+command! -nargs=0 Format :call CocAction('format')
 
 " Mappings for CoCList
 " Show all diagnostics.
