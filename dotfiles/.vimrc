@@ -321,6 +321,11 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
+"vim-fugitive
+"" support git diff --staged
+command Greview :Git! diff --staged
+nnoremap <leader>ds :Greview<cr>
+
 
 " vim-repl
 let g:repl_program = {
