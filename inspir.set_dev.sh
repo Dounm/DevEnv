@@ -116,6 +116,11 @@ InstallPythonRelated() {
   pip install ninja
 }
 
+InstallWithAptGet() {
+  apt-get install bear # for https://github.com/rizsotto/Bear
+  apt-get install clangd-9
+}
+
 
 ## Main
 
@@ -127,4 +132,5 @@ GenerateSSHkey
 # InstallGDBPrettyPrint
 InstallVimRelated
 InstallPythonRelated
+InstallWithAptGet
 # ConfigConda
