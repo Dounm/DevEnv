@@ -300,6 +300,7 @@ set nowritebackup
 set updatetime=300
 set shortmess+=c
 set signcolumn=number
+let g:coc_disable_transparent_cursor=1
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
