@@ -298,7 +298,7 @@ let g:repl_stayatrepl_when_open = 0
 
 " ==========================
 " Coc.nvim
-# :CocInstall coc-json coc-tsserver coc-yank coc-tabnine coc-sh coc-highligh coc-git coc-diagnostic coc-clang-format-style-options coc-xml coc-tabnine coc-jedi coc-clangd
+" :CocInstall coc-json coc-tsserver coc-yank coc-tabnine coc-sh coc-highligh coc-git coc-diagnostic coc-clang-format-style-options coc-xml coc-tabnine coc-jedi coc-clangd
 set hidden
 set nowritebackup
 set updatetime=300
