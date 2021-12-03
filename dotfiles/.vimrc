@@ -347,6 +347,9 @@ xmap <leader>f  <Plug>(coc-format-selected)
 " Use `:FFormat` to format the whole file
 command! -nargs=0 Format :call CocAction('format')
 
+" coc-yank
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
@@ -364,9 +367,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-" coc-yank
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 source ~/.specific_vimrc
