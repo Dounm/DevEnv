@@ -151,20 +151,14 @@ Plug 'preservim/nerdtree'
 Plug 'inkarkat/vim-ingo-library'
 " depends on vim-ingo-library
 Plug 'inkarkat/vim-mark'
-" Plug 'dense-analysis/ale'
-" Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
-" Plug 'ycm-core/YouCompleteMe'
-" Plug 'Shougo/echodoc.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'tpope/vim-abolish'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
-" Plug 'andymass/vim-matchup'
-" Plug 'zxqfl/tabnine-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
@@ -219,52 +213,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-" vim-guntenags
-" let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-" let g:gutentags_ctags_tagfile = 'tags'
-" let s:vim_tags = expand('~/.cache/tags')
-" let g:gutentags_cache_dir = s:vim_tags
-
-" let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-" let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-" let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-" if !isdirectory(s:vim_tags)
-"    silent! call mkdir(s:vim_tags, 'p')
-" endif
-
-" ale
-" let g:ale_linters_explicit = 1
-" let g:ale_completion_delay = 500
-" let g:ale_echo_delay = 20
-" let g:ale_lint_delay = 500
-" let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-" let g:ale_lint_on_text_changed = 'normal'
-" let g:ale_lint_on_insert_leave = 1
-" let g:airline#extensions#ale#enabled = 1
-
-" let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-" let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-" let g:ale_c_cppcheck_options = ''
-" let g:ale_cpp_cppcheck_options = ''
-" let g:ale_linters = { 'python': ['pylint'], 'cpp': ['clangtidy', 'cpplint'] }
-" let g:ale_python_pylint_options = '--disable=C,bad-indentation'
-" let g:ale_cpp_cpplint_options= '--filter=-build/header_guard,-legal --linelength=100'
-
-" " let g:ale_fix_on_save = 1
-" cmap fw ALEFix
-" let g:ale_fixers = {
-" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \   'python': ['add_blank_lines_for_python_control_statements',
-" \              'reorder-python-imports',
-" \              'autopep8'],
-" \   'cpp': ['clang-format', 'clangtidy'],
-" \}
-" let g:ale_python_autopep8_options = '--max-line-length 100 --indent-size 2'
-" let g:ale_cpp_clangformat_options = '-style=file'
-" let g:ale_cpp_clangtidy_options = '-I/data00/home/niuchong/git/jaguar2-work/jaguar'
-" let g:ale_cpp_clangtidy_checks = ['*', '-llvm-header-guard', '-misc-unused-parameters']
-
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
 set cmdheight=2
@@ -287,9 +235,6 @@ xnoremap <leader>v :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf
 xnoremap <leader>vb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer --stayOpen -e %s ", leaderf#Rg#visual())<CR>
 " recall last search. If the result window is closed, reopen it.
 noremap <leader>h :<C-U>Leaderf rg --stayOpen --recall<CR>
-
-" vim-clang-format
-let g:clang_format#command = 'clang-format-4.0'
 
 " vim-mark
 " cannot use noremap for Leader
