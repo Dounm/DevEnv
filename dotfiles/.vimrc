@@ -152,7 +152,7 @@ Plug 'inkarkat/vim-ingo-library'
 " depends on vim-ingo-library
 Plug 'inkarkat/vim-mark'
 " Plug 'dense-analysis/ale'
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
