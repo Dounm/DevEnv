@@ -56,6 +56,8 @@ imap <C-J> <down>
 imap <C-K> <up>
 imap <BackSpace> <left><del>
 imap jj <ESC>
+nnoremap j gj
+nnoremap k gk
 
 inoremap ( ()<ESC>i
 inoremap (( (
