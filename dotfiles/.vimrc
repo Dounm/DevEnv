@@ -272,6 +272,7 @@ let g:vista#renderer#icons = {
 "" support git diff --staged
 command Gd :Gvdiff
 command Gds :Git! diff --staged
+command Gc :Git commit
 
 
 " vim-repl
