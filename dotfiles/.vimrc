@@ -267,6 +267,7 @@ let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
+let g:vista_stay_on_open=0
 
 "vim-fugitive
 "" support git diff --staged
