@@ -119,6 +119,10 @@ InstallPythonRelated() {
 InstallWithAptGet() {
   apt-get install bear # for https://github.com/rizsotto/Bear
 
+  apt-get install pciutils
+  apt-get install hwloc
+  apt-get install numactl
+
   apt-get install clangd-9
   ln -s /usr/bin/clangd-9 /usr/bin/clangd
 
