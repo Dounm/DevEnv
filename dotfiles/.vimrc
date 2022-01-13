@@ -42,6 +42,11 @@ set backspace=indent,eol,start
 
 let mapleader = "," " the <Leader> in docs, default is \
 
+" auto resize when tmux zoom in/out
+if exists('$TMUX')
+  au VimResized * wincmd =
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set timeoutlen=300
 
