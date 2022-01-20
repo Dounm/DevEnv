@@ -118,6 +118,7 @@ InstallPythonRelated() {
 
 InstallWithAptGet() {
   apt-get install bear # for https://github.com/rizsotto/Bear
+  apt-get install pdsh
 
   apt-get install pciutils
   apt-get install hwloc
