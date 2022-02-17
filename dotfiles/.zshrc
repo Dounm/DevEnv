@@ -163,4 +163,9 @@ export C_INCLUDE_PATH=$CONDA_HOME/include:$C_INCLUDE_PATH
 export LD_LIBRARY_PATH=$CONDA_HOME/lib/:$LD_LIBRARY_PATH
 export LIBRARY_PATH=$CONDA_HOME/lib/:$LIBRARY_PATH
 
+lcat() {
+    ls -alh "$@"
+    cat "$@"
+}
+
 source ~/.specific_zshrc
