@@ -88,13 +88,6 @@ export LC_ALL=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias cls='clear' 
-alias ll='ls -l' 
-alias la='ls -la' 
-alias vi='vim' 
-alias mv='mv -i'
-alias ip='nocorrect ipython'
  
 #used in zsh only, not bash 
 alias -s html=vim #input the *.html in the shell and it will open in vim 
@@ -106,17 +99,6 @@ alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf' 
 alias -s zip='unzip' 
 alias -s bz2='tar -xjvf' 
- 
-alias sbash='source ~/.bashrc' 
-alias szsh='source ~/.zshrc'
-alias vbash='vim ~/.bashrc' 
-alias vzsh='vim ~/.zshrc' 
-alias vszsh='vim ~/.specific_zshrc' 
-alias vvim='vim ~/.vimrc' 
-alias vtmux='vim ~/.tmux.conf'
-
-alias ca='conda activate'
-alias da='conda deactivate'
 
 export EDITOR="vim"  #use vim to edit command in zsh
 bindkey -v
@@ -128,21 +110,6 @@ bindkey '^R' history-incremental-search-backward
 #used in zsh 
 bindkey " " magic-space 
 
-alias rm='python ${HOME}/.recycle.py ~/recycle_bin '~ ~/install ~/git' '
-alias dir="find . | grep -v -E '(.git)'"
-alias ag='alias | grep '
-alias gpull='git pull origin master'
-alias gpush='git push origin master'
-alias git='nocorrect git'
-
-#color
-alias tree='tree -C' #force color even if out is pipe not tty
-alias rg='rg -p'
-alias watch_gpu='watch --color gpustat --force-color'
-
-alias python='python3'
-alias clr_recycle='/bin/rm -rf ~/recycle_bin/*'
-alias rm_core='/bin/rm -f core.*'
 
 #256color
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
@@ -156,16 +123,13 @@ setopt no_nomatch
 
 bindkey '^p' autosuggest-accept
 
-#enable 256 color
-export TERM=xterm-256color
-
 export C_INCLUDE_PATH=$CONDA_HOME/include:$C_INCLUDE_PATH
 export LD_LIBRARY_PATH=$CONDA_HOME/lib/:$LD_LIBRARY_PATH
 export LIBRARY_PATH=$CONDA_HOME/lib/:$LIBRARY_PATH
 
-lcat() {
-    ls -alh "$@"
-    cat "$@"
-}
-
+source ~/.zsh_aliases
 source ~/.specific_zshrc
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

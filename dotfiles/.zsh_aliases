@@ -1,0 +1,37 @@
+alias cls='clear' 
+alias ll='ls -l' 
+alias la='ls -la' 
+alias vi='vim' 
+alias mv='mv -i'
+alias ip='nocorrect ipython'
+alias sbash='source ~/.bashrc' 
+alias szsh='source ~/.zshrc'
+alias vbash='vim ~/.bashrc' 
+alias vzsh='vim ~/.zshrc' 
+alias vszsh='vim ~/.specific_zshrc' 
+alias vvim='vim ~/.vimrc' 
+alias vtmux='vim ~/.tmux.conf'
+alias tmuxat='tmux attach-session -t'
+
+alias ca='conda activate'
+alias da='conda deactivate'
+
+alias rm='python ${HOME}/.recycle.py ~/recycle_bin '~ ~/install ~/git' '
+alias dir="find . | grep -v -E '(.git)'"
+alias gpull='git pull origin master'
+alias gpush='git push origin master'
+alias git='nocorrect git'
+#color
+alias tree='tree -C' #force color even if out is pipe not tty
+alias rg='rg -p'
+alias watch_gpu='watch --color gpustat --force-color'
+
+alias python='python3'
+alias clr_recycle='/bin/rm -rf ~/recycle_bin/*'
+alias rm_core='/bin/rm -f core.*'
+
+lcat() {
+    ls -alh "$@"
+    cat "$@"
+}
+
