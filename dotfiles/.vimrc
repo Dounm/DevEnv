@@ -7,6 +7,10 @@ set foldmethod=indent
 set foldlevel=99
 noremap <space> za
 
+"vim-polyglot
+set nocompatible
+let g:polyglot_disabled = ['markdown']
+
 set nobackup
 set formatoptions=tcqro
 set bsdir=buffer
