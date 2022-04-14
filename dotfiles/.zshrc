@@ -119,12 +119,7 @@ bindkey '^R' history-incremental-search-backward
 bindkey " " magic-space 
 
 
-#256color
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-    export TERM='xterm-256color'
-else
-    export TERM='xterm-color'
-fi
+export TERM='xterm-256color'
 
 #forbit zsh to expand regex *
 setopt no_nomatch
