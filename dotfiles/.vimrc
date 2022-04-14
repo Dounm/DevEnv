@@ -342,6 +342,7 @@ let g:rainbow_conf = {
 \  'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
 \  'separately': {
 \    '*': {},
+\    'cmake': 0,
 \    'python': {
 \       'ctermfgs': ['red', 'yellow', 'green', 'blue'],
 \    },
