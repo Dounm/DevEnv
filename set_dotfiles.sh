@@ -6,26 +6,19 @@ set -e
 #Set the dotfiles
 
 backup_date=`date +%F`
-TryBackupExistedDotFiles() {
-  if [ -f $1 ]
+file_path=/data/niuchong/git/DevEnv/dotfiles
+
+LinkDotFile() {
+  if [[ -e ~/$1 ]];
   then
-    mv $1 $1-${backup_date}
+    mv -f ~/$1 ~/$1.$backup_date
   fi
+  ln -s ${file_path}/$1 ~/$1
 }
 
 
-absolute_path=`pwd`/dotfiles
-
-TryBackupExistedDotFiles ~/.vimrc
-TryBackupExistedDotFiles ~/.zshrc
-TryBackupExistedDotFiles ~/.tmux.conf
-TryBackupExistedDotFiles ~/.mytmuxlayout
-
-
-ln -s ${absolute_path}/.zshrc ~/.zshrc
-ln -s ${absolute_path}/.tmux.conf ~/.tmux.conf
-ln -s ${absolute_path}/.mytmuxlayout ~/.mytmuxlayout
-ln -s ${absolute_path}/.vimrc ~/.vimrc
-ln -s `pwd`/recycle.py ~/.recycle.py
-
-echo > ~/.specific_zshrc
+LinkDotFile .vimrc
+LinkDotFile .zshrc
+LinkDotFile .zsh_aliases
+LinkDotFile .tmux.conf
+LinkDotFile .mytmuxlayout
