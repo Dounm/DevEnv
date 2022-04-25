@@ -162,7 +162,7 @@ Plug 'preservim/nerdtree'
 Plug 'inkarkat/vim-ingo-library'
 " depends on vim-ingo-library
 Plug 'inkarkat/vim-mark'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
@@ -231,13 +231,16 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 set cmdheight=2
 
 " LeaderF
-noremap <m-p> :LeaderfFunction<cr>
+noremap <m-p> :Leaderf command<cr>
 noremap <leader>g :LeaderfMru<cr>
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
 let g:Lf_WindowHeight = 0.30
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = { 'Function': 0 }
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_DefaultExternalTool = 'rg'
+let g:LF_FollowLinks = 1
 " search word under cursor, the pattern is treated as regex
 noremap <leader>w :<C-U><C-R>=printf("Leaderf rg -e '%s' ", expand("<cword>"))<CR>
 " search word under cursor literally only in current buffer
