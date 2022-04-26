@@ -368,6 +368,13 @@ let g:rainbow_conf = {
 \  }
 \}
 
+set splitbelow
+set splitright
+command Ts :sp | terminal
+command Tv :vs | terminal
+" command! -nargs=* T split | terminal <args>
+" command! -nargs=* VT vsplit | terminal <args>
+
 " ==========================
 " Coc.nvim
 " :CocInstall coc-json coc-tsserver coc-yank coc-tabnine coc-sh coc-highligh coc-git coc-diagnostic coc-clang-format-style-options coc-xml coc-tabnine coc-jedi coc-clangd
