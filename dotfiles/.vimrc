@@ -7,6 +7,9 @@ set foldmethod=indent
 set foldlevel=99
 noremap <space> za
 
+"terminal map
+tnoremap jj <C-\><C-n>
+
 "vim-polyglot
 set nocompatible
 let g:polyglot_disabled = ['markdown']
