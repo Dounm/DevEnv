@@ -193,9 +193,11 @@ colors molokai
 " colors PaperColor
 
 " asynctasks & asyncrun
-let g:asyncrun_open=6
+let g:asyncrun_open=20
 let g:asynctasks_term_pos = 'bottom'
 let g:asynctasks_term_focus = 0
+" command a123task :AsyncTask
+command -nargs=1 Task :AsyncTask <args>
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
