@@ -29,6 +29,7 @@ lcat() {
     ls -alh "$@"
     cat "$@"
 }
+alias task='asynctask -f'
 
 alias cls='clear'
 alias ll='ls -l'
