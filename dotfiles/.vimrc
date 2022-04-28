@@ -183,12 +183,19 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 " colorscheme
 set background=dark
 colors molokai
 " colors PaperColor
+
+" asynctasks & asyncrun
+let g:asyncrun_open=6
+let g:asynctasks_term_pos = 'bottom'
+let g:asynctasks_term_focus = 0
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
