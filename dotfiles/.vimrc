@@ -196,7 +196,7 @@ colors molokai
 let g:asyncrun_open=20
 let g:asynctasks_term_pos = 'bottom'
 let g:asynctasks_term_focus = 0
-cnoreabbrev Ta AsyncTask
+cnoreabbrev ta AsyncTask
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
