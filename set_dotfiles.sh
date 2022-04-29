@@ -22,3 +22,4 @@ LinkDotFile .zshrc
 LinkDotFile .zsh_aliases
 LinkDotFile .tmux.conf
 LinkDotFile .mytmuxlayout
+LinkDotFile .asynctasks.ini

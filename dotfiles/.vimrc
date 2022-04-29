@@ -197,6 +197,9 @@ let g:asyncrun_open=20
 let g:asynctasks_term_pos = 'bottom'
 let g:asynctasks_term_focus = 0
 cnoreabbrev ta AsyncTask
+let g:asynctasks_extra_config = [
+        \ '~/.asynctasks.ini'
+      \ ]
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
