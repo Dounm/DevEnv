@@ -47,6 +47,13 @@ set incsearch
 set hls
 set backspace=indent,eol,start
 
+set splitbelow
+set splitright
+command Ts :sp | terminal
+command Tv :vs | terminal
+" command! -nargs=* T split | terminal <args>
+" command! -nargs=* VT vsplit | terminal <args>
+
 let mapleader = "," " the <Leader> in docs, default is \
 
 " auto resize when tmux zoom in/out
@@ -379,12 +386,6 @@ let g:rainbow_conf = {
 \  }
 \}
 
-set splitbelow
-set splitright
-command Ts :sp | terminal
-command Tv :vs | terminal
-" command! -nargs=* T split | terminal <args>
-" command! -nargs=* VT vsplit | terminal <args>
 
 " ==========================
 " Coc.nvim
