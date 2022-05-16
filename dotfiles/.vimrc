@@ -172,7 +172,7 @@ Plug 'preservim/nerdtree'
 Plug 'inkarkat/vim-ingo-library'
 " depends on vim-ingo-library
 Plug 'inkarkat/vim-mark'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'vim-scripts/a.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'sgur/vim-textobj-parameter'
@@ -192,12 +192,29 @@ Plug 'easymotion/vim-easymotion'
 Plug 'luochen1990/rainbow'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " colorscheme
 set background=dark
 colors molokai
 " colors PaperColor
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fc <cmd>Telescope commands<cr>
+nnoremap <leader>fk <cmd>Telescope keymaps<cr>
+
+nnoremap <leader>gc <cmd>Telescope git_commits<cr>
+nnoremap <leader>gst <cmd>Telescope git_status<cr>
+nnoremap <leader>gsl <cmd>Telescope git_stash<cr>
+
 
 " asynctasks & asyncrun
 let g:asyncrun_open=20
@@ -250,28 +267,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 " echodoc
 " set noshowmode " not show current mode, leave space for echodoc
 set cmdheight=2
-
-" LeaderF
-noremap <m-p> :Leaderf command<cr>
-noremap <leader>g :LeaderfMru<cr>
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_WindowHeight = 0.30
-let g:Lf_StlColorscheme = 'powerline'
-let g:Lf_PreviewResult = { 'Function': 0 }
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_DefaultExternalTool = 'rg'
-let g:LF_FollowLinks = 1
-" search word under cursor, the pattern is treated as regex
-noremap <leader>w :<C-U><C-R>=printf("Leaderf rg -e '%s' ", expand("<cword>"))<CR>
-" search word under cursor literally only in current buffer
-noremap <leader>wb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer -e '%s' ", expand("<cword>"))<CR>
-" search visually selected text literally, don't quit LeaderF after accepting an entry
-xnoremap <leader>v :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
-" search visually selected text literally, don't quit LeaderF after accepting an entry
-xnoremap <leader>vb :<C-U><C-R>=printf("Leaderf rg -F --current-buffer --stayOpen -e %s ", leaderf#Rg#visual())<CR>
-" recall last search. If the result window is closed, reopen it.
-noremap <leader>h :<C-U>Leaderf rg --stayOpen --recall<CR>
 
 " vim-mark
 " cannot use noremap for Leader
