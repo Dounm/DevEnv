@@ -280,9 +280,11 @@ return packer.startup(function(use)
   })
 
   -- EasyMove
-  use({ "easymotion/vim-easymotion",
+  use({
+    "phaazon/hop.nvim",
+    event = "BufRead",
     config = function()
-      require("easymotion_conf")
+      require("hop").setup({})
     end,
   })
 

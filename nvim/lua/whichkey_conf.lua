@@ -336,11 +336,14 @@ local n_mappings = {
 
   m = {
     name = "Move&Jump",
-    f = { "<Plug>(easymotion-bd-f)", "Jump to Searched Char" },
-    w = { "<Plug>(easymotion-bd-w)", "Jump to beginning of word" },
-    W = { "<Plug>(easymotion-bd-W)", "Jump to beginning of WORD" },
-    e = { "<Plug>(easymotion-bd-e)", "Jump to beginning of word" },
-    E = { "<Plug>(easymotion-bd-E)", "Jump to beginning of WORD" },
+    w = { "<cmd>HopWord<cr>", "Jump to word" },
+    W = { "<cmd>HopWordMW<cr>", "Jump to word in multi window" },
+    c = { "<cmd>HopChar1<cr>", "Jump to char" },
+    C = { "<cmd>HopChar1MW<cr>", "Jump to char in multi window" },
+    p = { "<cmd>HopPattern<cr>", "Jump to pattern" },
+    P = { "<cmd>HopPatternMW<cr>", "Jump to pattern in multi window" },
+    l = { "<cmd>HopLineStart<cr>", "Jump to line" },
+    L = { "<cmd>HopLineStartMW<cr>", "Jump to line in multi window" },
   },
 }
 
