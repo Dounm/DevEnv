@@ -263,13 +263,18 @@ return packer.startup(function(use)
   })
 
   -- Bookmarks, use with telescope
-  use("MattesGroeger/vim-bookmarks")
-  use({ "tom-anders/telescope-vim-bookmarks.nvim",
+  use({ "MattesGroeger/vim-bookmarks",
     config = function()
       require("bookmarks_conf")
     end,
-    requires = { { 'MattesGroeger/vim-bookmarks' } }
   })
+  -- Got bugs?
+  -- use({ "tom-anders/telescope-vim-bookmarks.nvim",
+  --   config = function()
+  --     require("bookmarks_conf")
+  --   end,
+  --   requires = { { 'MattesGroeger/vim-bookmarks' } }
+  -- })
 
   -- Coc
   use({ 'neoclide/coc.nvim',

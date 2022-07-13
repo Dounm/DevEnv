@@ -85,8 +85,8 @@ local n_mappings = {
   ["T"] = { "<cmd>Twilight<cr>", "Focus on current code" },
   ["z"] = { "za", "Toggle Fold" },
 
-  ["x"] = { "<cmd>w!<cr>", " Save" },
-  ["Q"] = { "<cmd>qa!<cr>", " Quit Neovim" },
+  ["x"] = { "<cmd>x!<cr>", " Save" },
+  ["q"] = { "<cmd>cclose<cr>", "Close Quickfix" },
   -- ["S"] = { "<cmd>Startify<cr>", "舘Startify" },
   -- ["z"] = { "<cmd>ZenMode<cr>", " ZenMode" },
   -- Whichkey-p
@@ -155,7 +155,7 @@ local n_mappings = {
     --   "<cmd>lua require('fancy_telescope_conf').find_notes()<cr>",
     --   "Notes",
     -- },
-    b = { "<cmd>Telescope vim_bookmarks all<cr>", "All Bookmarks" },
+    -- b = { "<cmd>Telescope vim_bookmarks all<cr>", "All Bookmarks" },
     -- b = { "<cmd>Telescope vim_bookmarks current_file<cr>", "Bookmarks of Cur File" },
   },
 
@@ -321,30 +321,19 @@ local n_mappings = {
     -- m = { "<cmd>PasteImg<cr>", "Image" },
   },
 
-  B = {
-    name = "Bookmark",
-    i = { "<cmd>BookmarkToggle<cr>", "Insert Bookmark" },
-    -- a = { "<cmd>BookMarkAnnotate<cr>", "Insert bookmark" },
-    n = { "<cmd>BookmarkNext<cr>", "Next Bookmark" },
-    p = { "<cmd>BookmarkPrev<cr>", "Prev Bookmark" },
-    a = { "<cmd>BookmarkShowAll<cr>", "Show All Bookmarks" },
-    c = { "<cmd>BookmarkClear<cr>", "Clear Cur Bookmark" },
-    C = { "<cmd>BookmarkClearAll<cr>", "Clear All Bookmarks" },
-    s = { "<cmd>BookmarkSave ~/.bookmarks/ <cr>", "Save All Bookmarks" },
-    l = { "<cmd>BookmarkLoad ~/.bookmarks/ <cr>", "Load All Bookmarks" },
+  m = {
+    name = "BookMarks",
+    m = { "<Plug>BookmarkToggle", "Toggle Mark" },
+    a = { "<Plug>BookMarkAnnotate", "Insert Annotations" },
+    n = { "<Plug>BookmarkNext", "Next Bookmark" },
+    p = { "<Plug>BookmarkPrev", "Prev Bookmark" },
+    l = { "<Plug>BookmarkShowAll", "Show All Bookmarks" },
+    C = { "<Plug>BookmarkClearAll", "Clear All Bookmarks" },
+    -- c = { "<Plug>BookmarkClear", "Clear Cur Bookmark" },
+    -- s = { "<Plug>BookmarkSave ./.bookmarks ", "Save All Bookmarks" },
+    -- l = { "<Plug>BookmarkLoad ./.bookmarks ", "Load All Bookmarks" },
   },
 
-  m = {
-    name = "Move&Jump",
-    w = { "<cmd>HopWord<cr>", "Jump to word" },
-    W = { "<cmd>HopWordMW<cr>", "Jump to word in multi window" },
-    c = { "<cmd>HopChar1<cr>", "Jump to char" },
-    C = { "<cmd>HopChar1MW<cr>", "Jump to char in multi window" },
-    p = { "<cmd>HopPattern<cr>", "Jump to pattern" },
-    P = { "<cmd>HopPatternMW<cr>", "Jump to pattern in multi window" },
-    l = { "<cmd>HopLineStart<cr>", "Jump to line" },
-    L = { "<cmd>HopLineStartMW<cr>", "Jump to line in multi window" },
-  },
 }
 
 which_key.setup(setup)
@@ -364,10 +353,33 @@ local v_mappings = {
     e = { "<cmd>Hi -x<cr>", "Erase cur word" },
   }
 }
--- No use?
+
 which_key.register(v_mappings, {
   mode = "v", -- Visual mode
   prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+})
+
+local move_mappings = {
+  -- m = {
+  -- name = "Move&Jump",
+  w = { "<cmd>HopWord<cr>", "Jump to word" },
+  W = { "<cmd>HopWordMW<cr>", "Jump to word in multi window" },
+  c = { "<cmd>HopChar1<cr>", "Jump to char" },
+  C = { "<cmd>HopChar1MW<cr>", "Jump to char in multi window" },
+  p = { "<cmd>HopPattern<cr>", "Jump to pattern" },
+  P = { "<cmd>HopPatternMW<cr>", "Jump to pattern in multi window" },
+  l = { "<cmd>HopLineStart<cr>", "Jump to line" },
+  L = { "<cmd>HopLineStartMW<cr>", "Jump to line in multi window" },
+  -- },
+}
+
+which_key.register(move_mappings, {
+  mode = "n",
+  prefix = "m",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
