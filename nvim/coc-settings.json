@@ -1,0 +1,6 @@
+{
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": ["python", "cpp", "lua"],
+  "python.formatting.provider": "black",
+  "Lua.telemetry.enable": true
+}
