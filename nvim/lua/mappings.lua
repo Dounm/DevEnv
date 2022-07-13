@@ -9,6 +9,7 @@ local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
+-- vim.cmd([[map q <Nop>]])
 
 -- Modes
 --   normal_mode = "n",
@@ -17,3 +18,7 @@ vim.g.maplocalleader = ","
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
+
+-- keymap("i", "jj", '<ESC>', opts)
+-- keymap("n", "j", 'gj', opts)
+-- keymap("n", "k", 'gk', opts)

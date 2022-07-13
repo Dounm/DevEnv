@@ -1,5 +1,5 @@
 -- custom icons
-local icons = require("user.icons")
+-- local icons = require("user.icons")
 -- init.lua
 
 -- setup with all defaults
@@ -113,10 +113,10 @@ require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 		show_on_dirs = true,
 		icons = {
 
-			hint = icons.diagnostics.Hint,
-			info = icons.diagnostics.Information,
-			warning = icons.diagnostics.Warning,
-			error = icons.diagnostics.Error,
+			-- hint = icons.diagnostics.Hint,
+			-- info = icons.diagnostics.Information,
+			-- warning = icons.diagnostics.Warning,
+			-- error = icons.diagnostics.Error,
 		},
 	},
 	filters = {

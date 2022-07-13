@@ -98,10 +98,49 @@ return packer.startup(function(use)
     end,
   })
 
+  -- Startup Screen
+  use {
+    'goolord/alpha-nvim',
+    event = "BufWinEnter",
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    end
+  }
+
+  -- Git
+  use({ "tpope/vim-fugitive",
+    config = function()
+      require("git_conf")
+    end,
+  })
+
+  -- Diagnostics
   use({
-    "itchyny/vim-cursorword",
-    event = { "BufReadPre", "BufNewFile" },
-    -- disable = not builtin.plugins.cursorWord.active,
+    "folke/trouble.nvim",
+    config = function()
+      require("_trouble_nvim_conf")
+    end,
+  })
+
+  -- AsynRun&AsyncTask
+  use({
+    "skywind3000/asyncrun.vim",
+    cmd = { "AsyncRun" },
+  })
+  use({
+    "skywind3000/asynctasks.vim",
+    cmd = { "AsyncTask" },
+    config = function()
+      vim.g.asynctasks_term_pos = "bottom"
+      vim.g.asyntasks_term_focus = 0
+      vim.g.asyncrun_open = 20
+      -- vim.g.asynctasks_term_cols = 60
+      -- vim.g.asynctasks_term_rows = 12
+      vim.cmd([[
+        let g:asynctasks_extra_config = ['~/.config/nvim/tasks.ini']
+        ]])
+    end,
   })
 
   use({
@@ -116,6 +155,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter-textobjects",
     before = "nvim-treesitter",
   })
+  use("wellle/targets.vim") -- more text objects
 
   use({
     "p00f/nvim-ts-rainbow",
@@ -136,16 +176,26 @@ return packer.startup(function(use)
     event = "BufRead",
   })
 
+
+  -- Focus on code you're editing
+  use({
+    "folke/twilight.nvim",
+    config = function()
+      require("_twilight")
+    end,
+  })
+
+  -- Buffer Related
   use { 'akinsho/bufferline.nvim',
     tag = "v2.*",
     requires = {
       { 'kyazdani42/nvim-web-devicons' },
-      { 'Asheq/close-buffers.vim' },
     },
     config = function()
       require("bufferline_conf")
     end,
   }
+  use({ "Asheq/close-buffers.vim" })
 
   use {
     "windwp/nvim-autopairs",
@@ -222,18 +272,43 @@ return packer.startup(function(use)
   })
 
   -- Coc
-  use { 'neoclide/coc.nvim',
+  use({ 'neoclide/coc.nvim',
     branch = 'release',
+    -- config = function()
+    --   require("coc_conf")
+    -- end,
+  })
+
+  -- EasyMove
+  use({ "easymotion/vim-easymotion",
     config = function()
-      require("coc_conf")
+      require("easymotion_conf")
     end,
-  }
+  })
+
+  -- Highlight
+  use({ "azabiong/vim-highlighter" })
 
   -- Miscs
   use({
     "dstein64/vim-startuptime",
     cmd = "Startuptime",
   })
+
+  use({
+    "itchyny/vim-cursorword",
+    event = { "BufReadPre", "BufNewFile" },
+    -- disable = not builtin.plugins.cursorWord.active,
+  })
+
+  use({
+    "tpope/vim-surround",
+    keys = { "c", "d", "y", "s", "S" },
+  })
+  use("tpope/vim-repeat")
+
+  use("vim-scripts/a.vim")
+  use("AndrewRadev/linediff.vim")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

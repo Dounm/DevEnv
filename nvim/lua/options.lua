@@ -70,12 +70,21 @@ local options = {
   numberwidth = 4, -- set number column width to 2 {default 4}
 
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-  wrap = false, -- display lines as one long line
+  wrap = on, -- display long lines as multi-line
   scrolloff = 8, -- is one of my fav
   sidescrolloff = 8,
 
   list = true,
   listchars = "tab:>-,trail:-",
+
+  background = "dark",
+
+  splitbelow = true,
+  splitright = true,
+
+  incsearch = true,
+  hls = true,
+  backspace = "indent,eol,start",
 }
 
 vim.opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|.
@@ -98,3 +107,4 @@ vim.o.foldminlines = 1 --设置可以显示折叠的屏幕行数 关闭也适用
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
+vim.cmd([[colorscheme molokai]])
