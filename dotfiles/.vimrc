@@ -73,10 +73,10 @@ endif
 " map tc :tabc<CR>
 
 imap <C-L> <right>
-" imap <C-H> <left>
+imap <C-H> <left>
 imap <C-J> <down>
 imap <C-K> <up>
-imap <BackSpace> <left><del>
+" imap <BackSpace> <left><del>
 imap jj <ESC>
 nnoremap j gj
 nnoremap k gk
@@ -314,14 +314,30 @@ function! s:show_documentation()
 endfunction
 
 
-" use <ctrl-p> to toggle auto-completion
-inoremap <silent><expr> <c-p> coc#refresh()
-" use <cr>/enter to auto-select first and format
+" Use <Down>/<Up>, do not use <C-n>/<C-p>
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "<Down>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "<Up>" : "\<C-h>"
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-inoremap <silent> ,s <C-r>=CocActionAsync('showSignatureHelp')<CR>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
+" Use <c-p> to trigger completion.
+inoremap <silent><expr> <c-p> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
+
+
+let g:coc_snippet_next = '<tab>'  " for coc-snippet
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')

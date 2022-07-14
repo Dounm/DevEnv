@@ -290,6 +290,7 @@ local n_mappings = {
     e = { "<cmd>CocList extensions<cr>", "Extensions" },
     c = { "<cmd>CocList commands<cr>", "Commands" },
     s = { "<cmd>CocList -I symbols<cr>", "Symbols" },
+    S = { "<cmd>CocList snippets<cr>", "Snippet" },
     D = { "<cmd>CocList diagnostics<cr>", "Diagnostics" },
     j = { "<cmd>CocNext<cr>", "CocNext" },
     k = { "<cmd>CocPrev<cr>", "CocPrev" },
