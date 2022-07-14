@@ -314,8 +314,8 @@ function! s:show_documentation()
 endfunction
 
 
-" use <ctrl-space> to toggle auto-completion
-inoremap <silent><expr> <c-space> coc#refresh()
+" use <ctrl-p> to toggle auto-completion
+inoremap <silent><expr> <c-p> coc#refresh()
 " use <cr>/enter to auto-select first and format
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
