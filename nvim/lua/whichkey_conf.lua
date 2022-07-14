@@ -75,7 +75,7 @@ local n_mappings = {
   -- ["h"] = { "<cmd>nohl<cr>", "Highlight" },
   -- ["H"] = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Ts Highlight" },
 
-  ["o"] = { "<cmd>AerialToggle<cr>", " Outline" },
+  ["a"] = { "<cmd>AerialToggle<cr>", " Aerial Outline" },
   ["v"] = { "<cmd>Vista!!<cr>", " Vista Outline" },
 
   ["T"] = { "<cmd>Twilight<cr>", "Focus on current code" },
@@ -129,6 +129,7 @@ local n_mappings = {
     e = { "<cmd>Telescope file_browser<cr>", "File_browser" },
     d = { "<cmd>lua require('fancy_telescope_conf').findDotfile()<cr>", "Dotfiles" },
     f = { "<cmd>Telescope find_files<cr>", "Files" },
+    b = { "<cmd>Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case<cr>", "current buffer find" },
     g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
     w = { "<cmd>Telescope grep_string<cr>", "Grep Cur Word" },
     c = { "<cmd>Telescope commands<cr>", "Commands" },

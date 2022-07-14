@@ -53,6 +53,12 @@ return packer.startup(function(use)
     config = function() require 'telescope_conf' end,
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+  use {'nvim-telescope/telescope-fzf-native.nvim', -- mainly for current_buffer_fuzzy_find
+    run = 'make',
+    config = function()
+      require('telescope').load_extension('fzf')
+    end,
+  }
 
   -- Outline
   use {
