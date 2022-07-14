@@ -120,6 +120,13 @@ return packer.startup(function(use)
       require("git_conf")
     end,
   })
+	use({
+		"lewis6991/gitsigns.nvim",
+		event = "BufRead",
+		config = function()
+			require("_gitsigns")
+		end,
+	})
 
   -- Diagnostics
   use({
