@@ -92,7 +92,7 @@ return packer.startup(function(use)
 
   use({
     "kyazdani42/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeOpen" },
+    cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFocus" },
     config = function()
       require("nvim-tree_conf")
     end,

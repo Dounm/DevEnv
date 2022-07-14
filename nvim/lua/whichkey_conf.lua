@@ -69,16 +69,12 @@ local setup = {
   },
 }
 
-local opts = {
-}
-
 local n_mappings = {
   -- no prefix mapping
   ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", " Comment" },
   -- ["h"] = { "<cmd>nohl<cr>", "Highlight" },
   -- ["H"] = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Ts Highlight" },
 
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", " Explorer" },
   ["o"] = { "<cmd>AerialToggle<cr>", " Outline" },
   ["v"] = { "<cmd>Vista!!<cr>", " Vista Outline" },
 
@@ -89,6 +85,11 @@ local n_mappings = {
   ["q"] = { "<cmd>cclose<cr>", "Close Quickfix" },
   -- ["S"] = { "<cmd>Startify<cr>", "舘Startify" },
   -- ["z"] = { "<cmd>ZenMode<cr>", " ZenMode" },
+
+  -- Tree related
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Toggle Tree" },
+  ["t"] = { "<cmd>NvimTreeFocus<cr>", "Focus Tree" },
+
   -- Whichkey-p
   p = {
     name = " Packer",
@@ -281,16 +282,6 @@ local n_mappings = {
   -- },
 
   -- Whichkey-t
-  t = {
-    name = " Terminal",
-    n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-    g = { "<cmd>lua _GOTOP_TOGGLE()<CR>", "gotop" },
-    f = { "<cmd>ToggleTerm direction=float<cr>", " Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", " Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", " Vertical" },
-    t = { "<cmd>ToggleTerm direction=tab<cr>", "New Tab" },
-  },
 
   -- WhichKey-c
   c = {
@@ -380,6 +371,25 @@ local move_mappings = {
 which_key.register(move_mappings, {
   mode = "n",
   prefix = "m",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+})
+
+local terminal_mappings = {
+  -- name = " Terminal",
+  n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
+  p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+  g = { "<cmd>lua _GOTOP_TOGGLE()<CR>", "gotop" },
+  f = { "<cmd>ToggleTerm direction=float<cr>", " Float" },
+  h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", " Horizontal" },
+  v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", " Vertical" },
+  t = { "<cmd>ToggleTerm direction=tab<cr>", "New Tab" },
+}
+which_key.register(terminal_mappings, {
+  mode = "n",
+  prefix = "T",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
